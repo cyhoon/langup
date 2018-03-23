@@ -1,0 +1,19 @@
+{
+  "name": "craw-server",
+  "version": "1.0.0",
+  "description": "langup word crawling server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js"
+  },
+  "author": "jeffChoi",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "phantom": "^4.0.12",
+    "sequelize": "^4.37.3"
+  }
+}
