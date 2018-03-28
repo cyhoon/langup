@@ -2,3 +2,5 @@
 /craw-server/node_modules
 /craw-server/config
 /craw-server/resource
+
+/extension/node_modules
