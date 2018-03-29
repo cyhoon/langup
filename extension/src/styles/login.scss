@@ -1,0 +1,64 @@
+.login {
+    width: 300px;
+    height: 250px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 40% 50%;
+
+    .title {
+        grid-row-start: 1;
+        grid-row-end: 1;
+        text-align: center;
+        display: block;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin: auto 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    form {
+        margin: 0 auto;
+        width: 200px;
+        grid-row-start: 2;
+        grid-row-end: 2;
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 30% 30% 40%;
+
+        .id_panel {
+            grid-row-start: 1;
+            grid-row-end: 1;
+            width: 200px;
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid #eff0f2;
+            background-color: inherit;
+            outline: none;
+        }
+    
+        .pw_panel {
+            grid-row-start: 2;
+            grid-row-end: 2;
+            width: 200px;
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid #eff0f2;
+            background-color: inherit;
+            outline: none;
+        }
+
+        .login_btn {
+            grid-row-start: 3;
+            grid-row-end: 3;
+            height: 30px;
+            border: none;
+            background-color: #eff0f2;
+            border-radius: 3px;
+            margin: auto 0;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+}
