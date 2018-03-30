@@ -6,5 +6,8 @@
     "default_popup": "index.html",
     "default_title": "Langup"
   },
+  "permissions": [
+    "storage"
+  ],
   "version": "1.0"
 }
