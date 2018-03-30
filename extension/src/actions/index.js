@@ -17,7 +17,9 @@ export function login(id, pw) {
         console.log('token : ', token);
         localStorage.token = token;
         console.log('localStorage : ', localStorage);
-        // storge 저장
+
+        // 페이지 리로드
+        window.location.reload()
     }).catch((err) => {
         return;
     });
