@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "langup backend server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./src/server.js"      
+  },
+  "author": "jeffchoi",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2"
+  }
+}
