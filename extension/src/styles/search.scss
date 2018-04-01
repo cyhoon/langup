@@ -1,0 +1,32 @@
+.search {
+    padding: 10px;
+
+    form {
+        width: 300px;
+        height: 30px;
+        color: #333333;
+        display: grid;
+        grid-template-columns: 80% 20%;
+
+        input[type="text"] {
+            grid-column-start: 1;
+            grid-column-end: 1;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            padding-left: 10px;
+            outline: none;
+            border: 1px solid #ccc;
+        }
+
+        .search_btn {
+            grid-column-start: 2;
+            grid-column-end: 2;
+            height: 100%;
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 0px;
+            cursor: pointer;
+        }
+    }
+}
