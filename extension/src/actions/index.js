@@ -1,6 +1,15 @@
+/**
+ * Module dependencies
+ */
+
 import axios from 'axios';
 
-export const LOGIN = 'LOGIN'; // 액션
+/**
+ * Define action name.
+ */
+
+export const LOGIN = 'LOGIN';
+export const SEARCH = 'SEARCH';
 const baseUrl = 'http://localhost:4000';
 
 export function login(id, pw) {
@@ -29,6 +38,58 @@ export function login(id, pw) {
         payload: {
             id,
             pw
+        }
+    };
+}
+
+export function search(content) {
+
+    // 비동기는 따로 개인 사용자 모듈이 있어야함
+    // readux-thunk 사용..
+
+    // 서버로 보내주는 작업 처리
+    // const url = baseUrl + '/search/';
+
+    // axios.post(url, {
+    //     content
+    // }).then((res) => {
+    //     // Rest 직렬화 시키면됨.
+    //     return {
+    //         type: SEARCH,
+    //         payload: {
+    //             status: 200,
+    //             message: '성공',
+    //             content,
+    //             means: res.means
+    //         }
+    //     };
+    // }).catch((err) => {
+    //     console.log(`error ${err}`);
+    //     return {
+    //         type: SEARCH,
+    //         payload: {
+    //             status: 500,
+    //             message: '에러',
+    //         }
+    //     };
+    // });
+
+    console.log('search action 실행');
+
+    return {
+        type: SEARCH,
+        payload: { // MOCK UP DATA
+            word: content,
+            means: [
+                {
+                    idx: 1,
+                    content: '안녕'
+                },
+                {
+                    idx: 2,
+                    content: 'ㅋㅋㅋ'
+                }
+            ]
         }
     };
 }
