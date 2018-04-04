@@ -1,4 +1,6 @@
 /backend/node_modules
+/backend/config
+
 /craw-server/node_modules
 /craw-server/config
 /craw-server/resource

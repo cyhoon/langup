@@ -12,6 +12,7 @@ const KoaBody = require('koa-body')({ multipart: true, strict: false });
 const KoaCors = require('koa-cors');
 const KoaRouter = require('koa-router');
 const KoaServe = require('koa-static');
+const models = require('./models');
 
 /**
  * API Moudle dependencies.

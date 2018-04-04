@@ -4,7 +4,7 @@
   "description": "langup backend server",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./src/server.js"      
+    "start": "nodemon ./src/server.js"
   },
   "author": "jeffchoi",
   "license": "MIT",
@@ -14,6 +14,8 @@
     "koa-body": "^2.5.0",
     "koa-cors": "^0.0.16",
     "koa-router": "^7.4.0",
-    "koa-static": "^4.0.2"
+    "koa-static": "^4.0.2",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.5"
   }
 }
