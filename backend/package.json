@@ -11,6 +11,7 @@
   "dependencies": {
     "dotenv": "^5.0.1",
     "joi": "^13.1.2",
+    "joi-date-extensions": "^1.1.1",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
     "koa-cors": "^0.0.16",

@@ -8,25 +8,24 @@ const router = new koaRouter();
 /**
  * Router Module dependencies.
  */
-const signin = require('./signin');
-const signup = require('./signup');
+const local = require('./local'); // local 수정
 
 /**
  * 
  * URL router information
  * 
- * login
+ * local ( 로컬 )
  * -
- * /auth/signin/local
- * /auth/singin/social
+ * /auth/local/signin = 로그인
+ * /auth/local/signup = 회원가입
  * 
- * register
+ * social ( 소셜 )
  * -
- * /auth/signup/local
- * /auth/signup/social
+ * /auth/social/signin/:provider 
+ * /auth/social/signup/:provider
  */
 
-router.use('/signin', signin.routes()); // login
-router.use('/signup', signup.routes()); // register
+router.use('/local', local.routes()); // local
+// router.use('/social', signup.routes()); // social
 
 module.exports = router;
