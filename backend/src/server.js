@@ -14,6 +14,12 @@ const KoaRouter = require('koa-router');
 const KoaServe = require('koa-static');
 
 /**
+ * API Moudle dependencies.
+ */
+
+ const api = require('./api');
+
+/**
  * Langup Rest Server
  * 
  * @api public
@@ -59,11 +65,7 @@ class RestServer {
      */
 
     middleware() {
-        this.router.get('/', (ctx, next) => {
-            ctx.status = 200;
-            ctx.body = 'Hello';
-            return;
-        });
+        this.router.use(api.routes());
     }
 
     /**
