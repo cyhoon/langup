@@ -34,5 +34,24 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
+    User.selectByUser = id => Member.findById(id, { attributes: ['id', 'name', 'mobile', 'email', 'profile_image', 'status_message', 'department_idx', 'position', 'task', 'tel', 'auth', 'status'], raw: true });
+
+    /**
+     * @description
+     * 
+     * selectByUser: 메서드 오버로딩이 안됨
+     * 인자 한 개: 이메일 조회
+     * 인자 두 개: 계정 조회
+     * 
+     */
+
+    User.selectByUserEmail = (email) => {
+        return User.findOne({where: {email}, raw: true});
+    }
+
+    User.selectByUser = (email, password) => {
+        return User.findOne({where: {email, password}, raw: true});
+    }
+
     return User;
 }

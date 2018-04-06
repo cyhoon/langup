@@ -21,7 +21,7 @@ const models = require('./models');
  const api = require('./api');
 
 /**
- * Langup Rest Server
+ * Rest Server
  * 
  * @api public
  */
