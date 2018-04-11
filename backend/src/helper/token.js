@@ -30,7 +30,6 @@ exports.verifyToken = async (token) => { // Verify Token
   try {
     return await jwt.verify(token, secret);
   } catch (error) {
-    console.log(error.message);
     throw error;
   }
 };

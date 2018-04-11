@@ -12,8 +12,19 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     EngDictionary.associate = (models) => { // Define associate models.
-        models.EngDictionary.hasMany(models.MeanDictionary, { as: 'meanDictionary', foreignKey: 'eng_word' });
+        models.EngDictionary.hasMany(models.MeanDictionary, { as: 'mean_dictionary', foreignKey: 'eng_word' });
     };
+
+    EngDictionary.searchByWord = (models, word) => {
+        return EngDictionary.findOne({
+            where: {word},
+            include: [{
+                model: models.MeanDictionary,
+                as: 'mean_dictionary',
+                attributes: ['kor_word'],
+            }],
+        });
+    }
 
     return EngDictionary;
 }

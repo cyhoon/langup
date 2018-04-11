@@ -13,6 +13,7 @@ const authMiddleware = async (ctx, next) => {
       status: 50,
       message: '토큰 인증 실패',
     }
+    return;
   }
 
   ctx.token = decodeToken;
