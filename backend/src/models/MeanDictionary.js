@@ -4,7 +4,7 @@
 module.exports = (sequelize, DataTypes) => {
     const MeanDictionary = sequelize.define('MeanDictionary', {
         idx: {
-            filed: 'idx',
+            field: 'idx',
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,  

@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
+    User.associate = (models) => {
+        models.User.hasMany(models.UserBook, { foreignKey: 'userEmail' });
+    }
+
     User.selectByUser = id => Member.findById(id, { attributes: ['id', 'name', 'mobile', 'email', 'profile_image', 'status_message', 'department_idx', 'position', 'task', 'tel', 'auth', 'status'], raw: true });
 
     /**
