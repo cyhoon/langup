@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             include: [{
                 model: models.MeanDictionary,
                 as: 'mean_dictionary',
-                attributes: ['kor_word'],
+                attributes: ['idx', 'kor_word'],
             }],
         });
     }

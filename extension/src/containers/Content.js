@@ -18,7 +18,7 @@ class Content extends Component {
 
     renderMean(mean) {
         return (
-            <Mean key={mean.idx} mean={mean.content} />
+            <Mean key={mean.idx} mean={mean.kor_word} />
         );
     }
 

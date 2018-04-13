@@ -42,25 +42,39 @@ export function login(id, pw) {
     };
 }
 
-export function search(content) {
+export async function search(content) {
 
     // 비동기는 따로 개인 사용자 모듈이 있어야함
     // readux-thunk 사용..
 
     // 서버로 보내주는 작업 처리
-    // const url = baseUrl + '/search/';
+    const url = `${baseUrl}/search/${content}`;
 
-    // axios.post(url, {
-    //     content
+    // axios.get(url, {
+    //     headers: { 'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }
     // }).then((res) => {
     //     // Rest 직렬화 시키면됨.
+
+    //     console.log(`JSON: ${JSON.stringify(res)}`);
+
     //     return {
     //         type: SEARCH,
     //         payload: {
-    //             status: 200,
-    //             message: '성공',
-    //             content,
-    //             means: res.means
+    //             word: content,
+    //             means: [
+    //                 {
+    //                     idx: 1,
+    //                     content: '안녕'
+    //                 },
+    //                 {
+    //                     idx: 2,
+    //                     content: 'ㅋㅋㅋ'
+    //                 },
+    //                 {
+    //                     idx: 3,
+    //                     content: 'ㅎㅅㅎ'
+    //                 }
+    //             ]
     //         }
     //     };
     // }).catch((err) => {
@@ -68,28 +82,47 @@ export function search(content) {
     //     return {
     //         type: SEARCH,
     //         payload: {
-    //             status: 500,
-    //             message: '에러',
+    //             word: content,
+    //             means: [
+    //             ]
     //         }
     //     };
     // });
 
-    console.log('search action 실행');
+    // console.log('search action 실행');
 
-    return {
+    // return {
+    //     type: SEARCH,
+    //     payload: { // MOCK UP DATA
+    //         word: content,
+    //         means: [
+    //             {
+    //                 idx: 1,
+    //                 content: '안녕'
+    //             },
+    //             {
+    //                 idx: 2,
+    //                 content: 'ㅋㅋㅋ'
+    //             },
+    //             {
+    //                 idx: 3,
+    //                 content: 'ㅎㅅㅎ'
+    //             }
+    //         ]
+    //     }
+    // };
+
+    const data = await axios.get(url, {headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }});
+
+    console.log(`data: ${JSON.stringify(data.data.data)}`);
+
+    const returnData = {
         type: SEARCH,
         payload: { // MOCK UP DATA
             word: content,
-            means: [
-                {
-                    idx: 1,
-                    content: '안녕'
-                },
-                {
-                    idx: 2,
-                    content: 'ㅋㅋㅋ'
-                }
-            ]
+            means: data.data.data.mean_dictionary
         }
-    };
+    }
+
+    return returnData;
 }

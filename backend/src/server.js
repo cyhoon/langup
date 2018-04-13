@@ -50,8 +50,9 @@ class RestServer {
     configration() {
         this.app.use((ctx, next) => {
             ctx.set('Access-Control-Allow-Credentials', true);
-            ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-timebase, Link');
+            ctx.set('Access-Control-Allow-Headers', 'Origin, x-access-token, X-Requested-With, Content-Type, Accept, x-timebase, Link');
             ctx.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+            ctx.set('Access-Control-Allow-Origin', '*');
             ctx.set('Access-Control-Expose-Headers', 'Link');
 
             return next();
