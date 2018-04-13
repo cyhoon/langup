@@ -31,5 +31,15 @@ module.exports = (sequelize, DataTypes) => {
         models.UserBook.hasMany(models.UserWord, { foreignKey: 'userBookIdx' });
     }
 
+    UserBook.selectByUserBookToday = (models, userEmail, nowDate) => {
+        return UserBook.findOne({
+            where: {
+                userEmail,
+                createDate: nowDate,
+            },
+            raw: true,
+        });
+    }
+
     return UserBook;
 }

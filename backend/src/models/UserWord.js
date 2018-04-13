@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME,
             defaultValue: DataTypes.NOW,
         },
+    }, {
+        tableName: 'user_word',
+        timestamps: false,
     });
 
     UserWord.associate = (models) => {

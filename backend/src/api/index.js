@@ -30,6 +30,6 @@ const authMiddleware = require('../middlewares/auth');
 
 // account
 router.use('/auth', auth.routes());
-router.use('/search', search.routes());
+router.use('/search', authMiddleware, search.routes());
 
 module.exports = router;
