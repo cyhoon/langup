@@ -127,11 +127,17 @@ export async function search(content) {
 
     console.log(`data: ${JSON.stringify(data.data.data)}`);
 
+    let mean_dictionary = [];
+
+    try {
+        mean_dictionary = data.data.data.mean_dictionary;
+    } catch (err) { } // mean_dictionary가 없는 경우
+
     const returnData = {
         type: SEARCH,
         payload: { // MOCK UP DATA
             word: content,
-            means: data.data.data.mean_dictionary
+            means: mean_dictionary
         }
     }
 
