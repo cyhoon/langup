@@ -6,6 +6,8 @@
     grid-template-rows: 40% 50% 10%;
 
     .title {
+        color: #0d1a26;
+        font-weight: bold;
         grid-row-start: 1;
         grid-row-end: 1;
         text-align: center;
@@ -54,7 +56,8 @@
             grid-row-end: 3;
             height: 30px;
             border: none;
-            background-color: #eff0f2;
+            color: white;
+            background-color: #3e68ff;
             border-radius: 3px;
             margin: auto 0;
             outline: none;

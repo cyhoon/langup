@@ -51,7 +51,7 @@ class Login extends Component {
   render() {
     return (
       <div className={cx('login')}>
-        <span className={cx('title')}>LangUp</span>
+        <span className={cx('title')}>Langup</span>
         <form onSubmit={this.onFormSubmit}>
           <input type="text" placeholder="아이디" value={this.state.id} onChange={this.onInputIdChange} className={cx('id_panel')} />
           <input type="password" placeholder="비밀번호" value={this.state.pw} onChange={this.onInputPwChange} className={cx('pw_panel')} />

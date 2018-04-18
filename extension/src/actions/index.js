@@ -14,7 +14,7 @@ const baseUrl = 'http://localhost:4000';
 
 export function login(id, pw) {
     // 서버로 보내주는 작업 처리
-    const url = baseUrl + '/auth/signin';
+    const url = baseUrl + '/auth/local/signin';
 
     axios.post(url, {
         id,
@@ -50,44 +50,31 @@ export async function search(content) {
     // 서버로 보내주는 작업 처리
     const url = `${baseUrl}/search/${content}`;
 
-    // axios.get(url, {
-    //     headers: { 'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }
-    // }).then((res) => {
-    //     // Rest 직렬화 시키면됨.
+    axios.get(url, {
+        headers: { 'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }
+    }).then((res) => {
+        // Rest 직렬화 시키면됨.
 
-    //     console.log(`JSON: ${JSON.stringify(res)}`);
+        console.log(`JSON: ${JSON.stringify(res)}`);
 
-    //     return {
-    //         type: SEARCH,
-    //         payload: {
-    //             word: content,
-    //             means: [
-    //                 {
-    //                     idx: 1,
-    //                     content: '안녕'
-    //                 },
-    //                 {
-    //                     idx: 2,
-    //                     content: 'ㅋㅋㅋ'
-    //                 },
-    //                 {
-    //                     idx: 3,
-    //                     content: 'ㅎㅅㅎ'
-    //                 }
-    //             ]
-    //         }
-    //     };
-    // }).catch((err) => {
-    //     console.log(`error ${err}`);
-    //     return {
-    //         type: SEARCH,
-    //         payload: {
-    //             word: content,
-    //             means: [
-    //             ]
-    //         }
-    //     };
-    // });
+        return {
+            type: SEARCH,
+            payload: {
+                word: content,
+                means: res.data.data.mean_dictionary,
+            }
+        };
+    }).catch((err) => {
+        console.log(`error ${err}`);
+        return {
+            type: SEARCH,
+            payload: {
+                word: content,
+                means: [
+                ]
+            }
+        };
+    });
 
     // console.log('search action 실행');
 
@@ -112,17 +99,17 @@ export async function search(content) {
     //     }
     // };
 
-    const data = await axios.get(url, {headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }});
+    // const data = await axios.get(url, {headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }});
 
-    console.log(`data: ${JSON.stringify(data.data.data)}`);
+    // console.log(`data: ${JSON.stringify(data.data.data)}`);
 
-    const returnData = {
-        type: SEARCH,
-        payload: { // MOCK UP DATA
-            word: content,
-            means: data.data.data.mean_dictionary
-        }
-    }
+    // const returnData = {
+    //     type: SEARCH,
+    //     payload: { // MOCK UP DATA
+    //         word: content,
+    //         means: data.data.data.mean_dictionary
+    //     }
+    // }
 
-    return returnData;
+    // return returnData;
 }

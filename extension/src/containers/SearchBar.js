@@ -41,7 +41,7 @@ class SearchBar extends Component {
             <div className={ cx('search') }>
                 <form onSubmit={ this.onFormSubmit }>
                     <input type='text' value={this.state.content} onChange={this.onInputChange} placeholder="검색할 단어를 입력해 주세요" />
-                    <button type='submit' className={ cx('search_btn') }>검색</button>
+                    <button type='submit' className={ cx('search-btn') }>검색</button>
                 </form>
             </div>
         )

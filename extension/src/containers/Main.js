@@ -3,11 +3,18 @@ import SearchBar from '../containers/SearchBar';
 import Content from '../containers/Content';
 
 class Main extends Component {
+
+  constructor(props) {
+    super(props);
+  
+    this.state = { isContent: false };
+  }
+
   render() {
     return (
       <div>
         <SearchBar />
-        <Content />
+        { this.state.isMain ? <Content /> : null }
       </div>
     );
   }
