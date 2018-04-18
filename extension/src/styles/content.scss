@@ -1,8 +1,9 @@
 .content {
-    width: 300px;
-    padding: 10px;
+    width: 320px;
+    padding: 0 10px 10px 10px;
 
     .mean_list {
+        min-height: 0;
         margin-left: 8px;
     }
 }
