@@ -32,4 +32,8 @@ const authMiddleware = require('../middlewares/auth');
 router.use('/auth', auth.routes());
 router.use('/search', authMiddleware, search.routes());
 
+router.get('/', (ctx) => {
+    ctx.body = 'hello world!';
+});
+
 module.exports = router;
