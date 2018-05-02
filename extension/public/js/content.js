@@ -14,7 +14,11 @@ const createMeanComponent = (word, meanDictionary) => {
 
     meanDiv.innerHTML = html;
     const bodyElement = document.querySelector('body');
-    bodyElement.addEventListener("click", () => { document.getElementById("mean").remove(); });
+    bodyElement.addEventListener("click", () => { 
+        const mean = document.getElementById("mean");
+        if (!mean) return; // 존재하지 않는다면
+        mean.remove();
+    });
     bodyElement.parentNode.insertBefore(meanDiv, bodyElement.nextSibling);
 }
 
@@ -36,7 +40,7 @@ const getWord = () => {
 
         if (!data) {
             console.info('데이터가 없습니다.');
-            createMeanComponent(word, []);
+            createMeanComponent(word, [{ kor_word: '데이터가 없습니다.' }]);
             return;
         }
 
