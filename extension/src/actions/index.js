@@ -20,6 +20,11 @@ export const IS_MAIN = 'IS_MAIN'; // main container show/hide 처리
  * baseUrl: 서버로 요청하는 호스트
  */
 const baseUrl = 'http://localhost:4000';
+let xAcccessToken;
+chrome.storage.sync.get(['token'], (value) => {
+    if (!value) return;
+    xAcccessToken = value.token;
+});
 
 /**
  * @function
@@ -36,23 +41,29 @@ export function isMain(visible) {
     }
 }
 
-export function login(id, pw) {
+export function login(email, password) {
     // 서버로 보내주는 작업 처리
     const url = baseUrl + '/auth/local/signin';
 
     axios.post(url, {
-        id,
-        pw
+        email,
+        password,
     }).then((res) => {
         // 결과를 보고 로그인에 성공했다면 chrome.extension.storge에 저장.
+        const { status } = res.data;
 
-        const token = id + pw;
-        console.log('token : ', token);
-        localStorage.token = token;
-        console.log('localStorage : ', localStorage);
+        if (status === 10 || status === 20) {
+            console.log('로그인 실패');
+            return;
+        }
 
-        // 페이지 리로드
-        window.location.reload();
+        const { token, refresh_token, user } = res.data.data;
+
+        chrome.storage.sync.set({token: token}, function() {
+            window.location.reload(); // 페이지 리로드
+        });
+        // localStorage.token = token;
+        // window.location.reload(); // 페이지 리로드
     }).catch((err) => {
         return;
     });
@@ -60,8 +71,8 @@ export function login(id, pw) {
     return {
         type: LOGIN,
         payload: {
-            id,
-            pw
+            email,
+            password,
         }
     };
 }
@@ -73,57 +84,7 @@ export async function search(content) {
 
     // 서버로 보내주는 작업 처리
     const url = `${baseUrl}/search/${content}`;
-
-    // axios.get(url, {
-    //     headers: { 'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyMzUwNDA2MSwiZXhwIjoxNTI0MTA4ODYxLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Z7LbO4s8nHcSg3SwL9dJfCcILn0YP6cX70I8w57OuAg' }
-    // }).then((res) => {
-    //     // Rest 직렬화 시키면됨.
-
-    //     console.log(`JSON: ${JSON.stringify(res)}`);
-
-    //     return {
-    //         type: SEARCH,
-    //         payload: {
-    //             word: content,
-    //             means: res.data.data.mean_dictionary,
-    //         }
-    //     };
-    // }).catch((err) => {
-    //     console.log(`error ${err}`);
-    //     return {
-    //         type: SEARCH,
-    //         payload: {
-    //             word: content,
-    //             means: [
-    //             ]
-    //         }
-    //     };
-    // });
-
-    // console.log('search action 실행');
-
-    // return {
-    //     type: SEARCH,
-    //     payload: { // MOCK UP DATA
-    //         word: content,
-    //         means: [
-    //             {
-    //                 idx: 1,
-    //                 content: '안녕'
-    //             },
-    //             {
-    //                 idx: 2,
-    //                 content: 'ㅋㅋㅋ'
-    //             },
-    //             {
-    //                 idx: 3,
-    //                 content: 'ㅎㅅㅎ'
-    //             }
-    //         ]
-    //     }
-    // };
-
-    const data = await axios.get(url, {headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyNTIxOTI0MywiZXhwIjoxNTI1ODI0MDQzLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Fz_maleYXuY0htvIX8Eql1rzUSTLNKmJENudNf3RPdU' }});
+    const data = await axios.get(url, {headers: {'x-access-token': `${xAcccessToken}` }});
 
     console.log(`data: ${JSON.stringify(data.data.data)}`);
 

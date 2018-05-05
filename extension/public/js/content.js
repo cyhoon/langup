@@ -1,5 +1,25 @@
 console.log('Chrome extension langup!');
 
+getSavedToken = () => {
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['token'], (value) => {
+            resolve(value.token);
+        });
+    });
+}
+
+// checkSavedToken = async () => {
+//     let token;
+
+//     await chrome.storage.sync.get(['token'], (value) => {
+//         console.log(value);
+//         token = value.token;
+//     });
+
+//     console.log('token: ', token);
+//     return token;
+// }
+
 const createMeanComponent = (word, meanDictionary) => {
     const meanDivStyles = 'position: fixed; overflow-y: scroll; max-height: 400px; top: 5px; right: 5px; z-index: 32314142 !important; padding: 10px; background-color: white; width: 320px; border-radius: 2px;box-shadow: rgb(145, 145, 145) 0px 0px 5px !important;';
     const meanDiv = document.createElement('div');
@@ -22,7 +42,9 @@ const createMeanComponent = (word, meanDictionary) => {
     bodyElement.parentNode.insertBefore(meanDiv, bodyElement.nextSibling);
 }
 
-const getWord = () => {
+const getWord = (token) => {
+    if (!token) return;
+
     const word = window.getSelection().toString();
     console.info('text: ', word);
 
@@ -33,10 +55,16 @@ const getWord = () => {
     const data = { word };
 
     const response = (response) => {
+        console.log(response);
         const payload = JSON.parse(response);
 
         console.info(`status: ${payload.status}, message: ${payload.message}`);
-        const { data } = payload;
+        const { status, data } = payload;
+
+        if (status === 50) {
+            createMeanComponent(word, [{ kor_word: '다시 로그인 해 주세요' }]);
+            return;
+        }
 
         if (!data) {
             console.info('데이터가 없습니다.');
@@ -53,4 +81,10 @@ const getWord = () => {
     chrome.runtime.sendMessage(data, response);
 }
 
-document.body.addEventListener('dblclick', getWord);
+const dbClick = () => {
+    Promise.resolve()
+        .then(getSavedToken)
+        .then(getWord);
+}
+
+document.body.addEventListener('dblclick', dbClick);

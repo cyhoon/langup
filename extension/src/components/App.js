@@ -4,24 +4,21 @@ import { Route, Switch } from 'react-router-dom';
 import Login from '../containers/Login';
 import Main from '../containers/Main';
 
-// const App = () => (
-//   <Login />
-//   // <React.Fragment>
-//   //   <Switch>
-//   //     <Route exact path="/" component={Login} />
-//   //     <Route path="/login" component={Login} />
-//   //   </Switch>
-//   // </React.Fragment>
-// );
-
 class App extends Component {
-
   constructor(props) {
     super(props);
+    this.state = { token: '' };
+  }
+
+  componentWillMount = async () => {
+    chrome.storage.sync.get(['token'], (value) => {
+      if (!value.token) return;
+      this.setState({ token: value.token });
+    });
   }
 
   render() {
-      if (!localStorage.token) {
+      if (!this.state.token) {
         return(<Login />)
       } else {
         return(<Main />)

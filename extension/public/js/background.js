@@ -2,19 +2,40 @@ console.log('do that something!');
 
 const host = 'http://localhost:4000/';
 const search = 'search/';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqZWZmQGdtYWlsLmNvbSIsImlhdCI6MTUyNTIxOTI0MywiZXhwIjoxNTI1ODI0MDQzLCJpc3MiOiJsYW5ndXAuY29tIiwic3ViIjoidG9rZW4ifQ.Fz_maleYXuY0htvIX8Eql1rzUSTLNKmJENudNf3RPdU';
 
-const onListen = (request, sender, sendResponse) => {
+getSavedToken = () => { // 토큰 검사
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(['token'], (value) => {
+            resolve(value.token);
+        });
+    });
+}
+
+const getData = (request, token) => { // 서버 요청
+    if (!token) return;
     const { word } = request;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", host+search+word, false);
-    xhr.setRequestHeader('x-access-token', token);
-    xhr.send();
+    return new Promise((resolve) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", host+search+word, false);
+        xhr.setRequestHeader('x-access-token', token);
+        xhr.onreadystatechange = () => {
+            return resolve(xhr.response);
+        };
+        xhr.send();
+    });
+}
 
-    var result = xhr.responseText;
-    console.log(result);
-    sendResponse(result);
+const responseData = (sendResponse, data) => { // 데이터 응답
+    sendResponse(data);
+}
+
+const onListen = (request, sender, sendResponse) => {
+    Promise.resolve()
+        .then(getSavedToken)
+        .then(token => getData(request, token))
+        .then(data => responseData(sendResponse, data));
+    return true;
 }
 
 chrome.runtime.onMessage.addListener(onListen);
