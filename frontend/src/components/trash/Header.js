@@ -51,6 +51,7 @@ class Header extends Component {
                 <Logo>Langup</Logo>
                 <Right>
                     <Button
+                        text="로그인 하기"
                         textColor="#03a87c"
                         color="#03a87c"
                         borderColor="#03a87c"
