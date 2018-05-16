@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import HomePage from './pages/HomePage';
-// import Header from './Header';
+import Test from './Test';
 
 class App extends Component {
     render() {
         return (
-            <Fragment>
-                <HomePage />
-            </Fragment>
+            <div>
+                <Route exact path="/" component={HomePage} />
+                <Route path="/test" component={Test} />
+            </div>
         );
     };
 }
