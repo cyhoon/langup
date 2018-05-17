@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
 
-import Navigation from '../../molecules/Navigation';
+import Nav from '../../molecules/Nav';
 
 const Container = styled.div`
     margin: 0 auto;
@@ -38,7 +38,7 @@ const Right = styled.div`
     line-height: 50px;
 `;
 
-const NavigationContainer = styled.div`
+const NavContainer = styled.div`
     display: block;
     width: 100%;
 `;
@@ -66,9 +66,9 @@ class Header extends Component {
                         />
                     </Right>
                 </HeaderContainer>
-                <NavigationContainer>
-                    <Navigation />
-                </NavigationContainer>
+                <NavContainer>
+                    <Nav />
+                </NavContainer>
             </Container>
         );
     }

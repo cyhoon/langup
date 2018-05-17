@@ -31,6 +31,10 @@ const Separate = styled.span`
     margin-bottom: 15px;
 `;
 
+const CardBody = styled.div`
+
+`;
+
 class CardMain extends Component {
     render() {
         return (
@@ -51,6 +55,9 @@ class CardMain extends Component {
                     <Expression>많은 회원분들이 보신 단어들을 추천합니다.</Expression>
                 </CardHeader>
                 <Separate />
+                <CardBody>
+                    Card Body
+                </CardBody>
             </div>
         );
     }

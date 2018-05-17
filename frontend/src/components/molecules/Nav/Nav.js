@@ -12,7 +12,7 @@ const Container = styled.div`
     text-align: center;
 `;
 
-class Navigation extends Component {
+class Nav extends Component {
     render() {
         return (
             <Container>
@@ -25,4 +25,4 @@ class Navigation extends Component {
     };
 };
 
-export default Navigation;
+export default Nav;
