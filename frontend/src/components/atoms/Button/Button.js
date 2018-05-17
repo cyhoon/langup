@@ -5,14 +5,16 @@ const Button = ({
     text,
     textColor,
     borderColor,
+    backgroundColor,
     width,
     height,
     borderRadius,
     fontSize,
-    fontWeight
+    fontWeight,
+    outLine,
  }) => {
     const DynamicButton = styled.button`
-        background-color: inherit;
+        background-color: ${backgroundColor? backgroundColor : 'inherit'};
         cursor: pointer;
 
         color: ${textColor}
@@ -24,6 +26,8 @@ const Button = ({
 
         font-size: ${fontSize};
         font-weight:  ${fontWeight};
+
+        outline: ${outLine ? outLine : 'undefined'};
     `;
     return (
         <DynamicButton>{text}</DynamicButton>
