@@ -3,7 +3,6 @@ import React from 'react';
 import PageTemplate from '../../templates/PageTemplate';
 
 import HeaderOrganisms from '../../organisms/Header';
-import CardMainOrganisms from '../../organisms/CardMain';
 
 import Jumbotron from '../../molecules/Jumbotron';
 
@@ -12,7 +11,6 @@ const HomePage = () => {
         <PageTemplate 
             header={ <HeaderOrganisms/> }
         >
-            <CardMainOrganisms />
             <Jumbotron 
                 subText="사용자들이 만들어가는"
                 mainText="랭업 오픈사전"

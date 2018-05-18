@@ -25,11 +25,11 @@ const Section = styled.div`
     margin-bottom: 30px;
 `; 
 
-const PopularWords = styled.div`
-    display: block;
-    width: 100%;
-    height: 100%;
-`;
+// const PopularWords = styled.div`
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+// `;
 
 const MakeYourDictionary = styled.div`
     display: block;
@@ -45,9 +45,9 @@ const PageTemplate = ({ header, children }) => {
                 { header }
             </Header>
             <Main>
-                <MakeYourDictionary>{ children[1] }</MakeYourDictionary>
+                <MakeYourDictionary>{ children }</MakeYourDictionary>
                 <Section>
-                    <PopularWords>{ children[0] }</PopularWords>
+                    
                 </Section>
             </Main>
         </div>
