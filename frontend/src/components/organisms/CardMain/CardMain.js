@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import Button from '../../atoms/Button';
 
+import CardBlock from '../../molecules/CardBlock';
+
 const CardHeader = styled.div`
     display: grid;
     grid-template-columns: 90% 10%;
@@ -56,7 +58,28 @@ class CardMain extends Component {
                 </CardHeader>
                 <Separate />
                 <CardBody>
-                    Card Body
+                    <CardBlock
+                        word='Hello'
+                        mean='(만났을 때의 인사로) 안녕(하세요); 인사; (전화에서나 남의 관심을 끌 때) 여보세요'
+                        imagePath='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlPpvWRru39-FDyWaHdVSnD43CWM8ihD_1t4uLxGyIg7rf6XyOxQ'
+                    />
+                    <CardBlock
+                        word='Cat'
+                        mean='(만났을 때의 인사로) 안녕(하세요); 인사; (전화에서나 남의 관심을 끌 때) 여보세요'
+                        imagePath='https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426'
+                        float='right'
+                    />
+                    <CardBlock
+                        word='Dog'
+                        mean='(만났을 때의 인사로) 안녕(하세요); 인사; (전화에서나 남의 관심을 끌 때) 여보세요'
+                        imagePath='https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg'
+                    />
+                    <CardBlock
+                        word='Hello'
+                        mean='(만났을 때의 인사로) 안녕(하세요); 인사; (전화에서나 남의 관심을 끌 때) 여보세요'
+                        imagePath='https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
+                        float='right'
+                    />
                 </CardBody>
             </div>
         );
