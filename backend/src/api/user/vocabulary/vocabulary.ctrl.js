@@ -2,12 +2,12 @@ const models = require('../../../models');
 const changeCase = require('change-object-case');
 
 exports.list = async (ctx, err) => { // 나의 단어장 들 보기
-    const { userEmail } = ctx.token;
-
     let response = {
       status: 0,
       message: '조회 성공',
     };
+
+    const { userEmail } = ctx.token;
 
     try {
       const list = await models.UserBook.selectByAllVocabulary(userEmail);
@@ -29,7 +29,27 @@ exports.create = async (ctx, err) => { // 나의 단어장 생성
 }
 
 exports.modifyName = async (ctx, err) => { // 나의 단어장 이름 수정
+  let response = {
+    status: 0,
+    message: '단어장 이름 수정 성공',
+  };
 
+  const { userEmail } = ctx.token;
+
+  const { idx } = ctx.params;
+  const { title } = ctx.request.body;
+
+  try {
+    const isSuccess = await models.UserBook.update({ title }, { where: { idx, userEmail }});
+    // 수정 성공 함, 응답만 개발 하면됨.
+    console.log('is success: ', isSuccess);
+    ctx.body = isSuccess;
+  } catch (error) {
+    response.status = 500;
+    response.message = '서버 에러';
+    ctx.status = 500;
+    ctx.body = response;
+  }
 }
 
 exports.delete = async (ctx, err) => { // 나의 단어장 삭제
