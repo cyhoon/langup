@@ -11,6 +11,7 @@ const router = new koaRouter();
 
 const auth = require('./auth');
 const search = require('./search');
+const user = require('./user');
 
 /**
  * Middle ware dependencies.
@@ -31,9 +32,6 @@ const authMiddleware = require('../middlewares/auth');
 // account
 router.use('/auth', auth.routes());
 router.use('/search', authMiddleware, search.routes());
-
-router.get('/', (ctx) => {
-    ctx.body = 'hello world!';
-});
+router.use('/user', authMiddleware, user.routes());
 
 module.exports = router;

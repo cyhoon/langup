@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         createDate: {
             field: 'create_date',
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             defaultValue: DataTypes.NOW,
         }
     }, {
@@ -36,6 +36,15 @@ module.exports = (sequelize, DataTypes) => {
             where: {
                 userEmail,
                 createDate: nowDate,
+            },
+            raw: true,
+        });
+    }
+
+    UserBook.selectByAllVocabulary = (userEmail) => {
+        return UserBook.findAll({
+            where: {
+                userEmail,
             },
             raw: true,
         });
