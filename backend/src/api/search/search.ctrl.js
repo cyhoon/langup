@@ -17,7 +17,7 @@ exports.search = async (ctx, err) => {
     let response = {
       status: 0,
       message: '단어 검색 성공',
-    }
+    };
 
     try {
       /**
