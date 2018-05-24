@@ -60,5 +60,31 @@ exports.modifyName = async (ctx, err) => { // 나의 단어장 이름 수정
 }
 
 exports.delete = async (ctx, err) => { // 나의 단어장 삭제
+  let response = {
+    status: 0,
+    message: '단어장 삭제 성공'
+  };
 
+  const { userEmail } = ctx.token;
+  const { idx } = ctx.params;
+
+  try {
+    const vocabulary = await models.UserBook.getUserBook( idx, userEmail );
+
+    if (!vocabulary) { // 존재하지 않는다면..
+      response.status = 20;
+      response.message = '단어장을 삭제 할 수 없습니다';
+    } else {
+      await models.UserBook.destroy({ where: { idx }});
+    }
+
+    ctx.status = 200;
+  } catch (error) {
+    console.error('error: ', error.message);
+    response.status = 500;
+    response.message = '서버 에러';
+    ctx.status = 500;
+  }
+
+  ctx.body = response;
 }
