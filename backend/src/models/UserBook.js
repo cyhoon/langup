@@ -50,5 +50,15 @@ module.exports = (sequelize, DataTypes) => {
         });
     }
 
+    UserBook.getUserBook = (idx, userEmail) => {
+        return UserBook.findOne({
+            where: {
+                idx,
+                userEmail,
+            },
+            raw: true
+        });
+    }
+
     return UserBook;
 }
