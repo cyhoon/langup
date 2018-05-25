@@ -9,17 +9,38 @@ import {
 
 import axios from 'axios';
 
-const signInRequest = (userEmail, userPassword) => {
-    return 'SIGN IN REQUEST';
+const host = 'http://localhost:4000';
+
+export function signInRequest(email, password) {
+
+    return (dispatch) => {
+        // return {
+        //     type: AUTH_LOGIN
+        // };
+        dispatch(signIn());
+
+        return axios.post(host + '/auth/local/signin', { email, password })
+        .then((response) => {
+            console.log('response ', response);
+            return {
+                type: 'success'
+            }
+        }).catch((error) => {
+            console.log('error ', error);
+            return {
+                type: 'fail'
+            }
+        });
+    }
 };
 
-const signIn = () => {
+export function signIn() {
     return {
         type: AUTH_LOGIN
     };
 };
 
-const signInSuccess = (user, token) => {
+export function signInSuccess(user, token) {
     return {
         type: AUTH_LOGIN_SUCCESS,
         user,
@@ -27,13 +48,8 @@ const signInSuccess = (user, token) => {
     };
 };
 
-const signInFailure = () => {
+export function signInFailure() {
     return {
         type: AUTH_LOGIN_FAILURE
     }
 };
-
-export const signInRequest;
-export const signIn;
-export const signInSuccess;
-export const signInFailure;
