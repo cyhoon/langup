@@ -12,6 +12,7 @@ const Button = ({
     fontSize,
     fontWeight,
     outLine,
+    children
  }) => {
     const DynamicButton = styled.button`
         background-color: ${backgroundColor? backgroundColor : 'inherit'};
@@ -30,7 +31,7 @@ const Button = ({
         outline: ${outLine ? outLine : 'undefined'};
     `;
     return (
-        <DynamicButton>{text}</DynamicButton>
+        <DynamicButton>{children}</DynamicButton>
     );
 };
 

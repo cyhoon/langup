@@ -7,7 +7,7 @@ import Test from './Test';
 class App extends Component {
     render() {
         return (
-            <div>
+            <div style={{ height: '100%' }}>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/test" component={Test} />
             </div>
