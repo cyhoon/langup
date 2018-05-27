@@ -59,7 +59,6 @@ const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
                     <MainTitle>{ mainText }</MainTitle>
                 </div>
                 <Button
-                    text={ buttonText }
                     textColor="white"
                     backgroundColor="#252726"
                     width="27%"
@@ -67,7 +66,7 @@ const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
                     fontSize="14px"
                     fontWeight="bold"
                     borderRadius="5px"
-                />
+                >{ buttonText }</Button>
             </TextComponent>
             <ImageComponent />
         </Container>
