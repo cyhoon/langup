@@ -9,6 +9,8 @@ const Container = styled.div`
   height: 100%;
 
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 100px;
 
   display: flex;
@@ -48,7 +50,7 @@ const AuthTemplate = () => {
             <LocalAuth>
                 <LoginMain
                     title='Langup'
-                    experience='언어 공부하기 좋은곳'
+                    experience='언어 공부하기 참 좋은곳'
                 />
             </LocalAuth>
             <SocialAuth>
