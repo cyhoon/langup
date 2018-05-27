@@ -13,7 +13,7 @@ const Experience = styled.div`
   margin-bottom: 10px;
 `;
 
-const LoginBlock = ({ name, type }) => {
+const AuthBlock = ({ name, type }) => {
   return (
     <Container>
       <Experience>{name}</Experience>
@@ -31,4 +31,4 @@ const LoginBlock = ({ name, type }) => {
   );
 };
 
-export default LoginBlock;
+export default AuthBlock;

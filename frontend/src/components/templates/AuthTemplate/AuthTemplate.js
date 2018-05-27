@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import LoginMain from '../../organisms/LoginMain';
+import RegisterMain from '../../organisms/RegisterMain';
 import SocialBlock from '../../molecules/SocialBlock';
+
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   max-width: 400px;
@@ -31,7 +34,7 @@ const LocalAuth = styled.div`
 const SocialAuth = styled.div`
   display: block;
   width: 100%;
-  margin: 0 auto;
+  margin: 10px auto;
 `;
 
 const Header = styled.div`
@@ -44,21 +47,45 @@ const Title = styled.span`
     font-size: 18px;
 `;
 
-const AuthTemplate = () => {
-    return (
-        <Container>
+const Hyper = styled.span`
+    text-align: right;
+`;
+
+const AuthTemplate = ({ url }) => {
+    switch (url) {
+    case '/login':
+        return (<Container>
             <LocalAuth>
                 <LoginMain
                     title='Langup'
-                    experience='언어 공부하기 참 좋은곳'
+                    experience='오늘도 시작해 볼까요?'
                 />
             </LocalAuth>
             <SocialAuth>
                 <Header><Title>또는</Title></Header>
                 <SocialBlock />
             </SocialAuth>
-        </Container>
-    );
+            <Hyper><Link to='/register'>가입하기</Link></Hyper>
+        </Container>);
+    case '/register':
+        return (
+            <Container>
+                <LocalAuth>
+                    <RegisterMain
+                        title='Langup'
+                        experience='언어 공부하기 참 좋은곳'
+                    />
+                </LocalAuth>
+                <SocialAuth>
+                    <Header><Title>또는</Title></Header>
+                    <SocialBlock />
+                </SocialAuth>
+                <Hyper><Link to='/login'>로그인하기</Link></Hyper>
+            </Container>
+        );
+    default:
+        return (<div>Error</div>);
+    }
 };
 
 export default AuthTemplate;

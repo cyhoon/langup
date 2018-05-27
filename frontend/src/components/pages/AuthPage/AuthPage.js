@@ -2,9 +2,9 @@ import React from 'react';
 
 import AuthTemplate from '../../templates/AuthTemplate';
 
-const AuthPage = () => {
+const AuthPage = ({ match }) => {
     return (
-        <AuthTemplate />
+        <AuthTemplate url={match.url} />
     );
 };
 

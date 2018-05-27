@@ -10,7 +10,8 @@ class App extends Component {
         return (
             <div style={{ height: '100%' }}>
                 <Route exact path="/" component={HomePage} />
-                <Route path="/auth" component={AuthPage} />
+                <Route path="/login" component={AuthPage} />
+                <Route path="/register" component={AuthPage} />
                 <Route path="/test" component={Test} />
             </div>
         );

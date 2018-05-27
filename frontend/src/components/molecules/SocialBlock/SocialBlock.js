@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Button from '../../atoms/Button';
 
-import FacebookIcon from 'react-icons/lib/fa/facebook-official';
+// import FacebookIcon from 'react-icons/lib/fa/facebook-official';
 
 const Wrap = styled.div`
     margin-top: 5px;

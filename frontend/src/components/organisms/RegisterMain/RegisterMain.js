@@ -37,7 +37,7 @@ const Body = styled.div`
   margin: 0 auto;
 `;
 
-class LoginMain extends Component {
+class RegisterMain extends Component {
     render() {
         return (
             <Container>
@@ -48,6 +48,7 @@ class LoginMain extends Component {
                 <Body>
                     <AuthBlock name='이메일' type='text' />
                     <AuthBlock name='비밀번호' type='password' />
+                    <AuthBlock name='이름' type='text' />
                     <Button
                         textColor='white'
                         backgroundColor='#03a87c'
@@ -57,11 +58,11 @@ class LoginMain extends Component {
                         fontWeight='bold'
                         border='none'
                         outline='none'
-                    >로그인</Button>
+                    >회원가입</Button>
                 </Body>
             </Container>
         );
     }
 }
 
-export default LoginMain;
+export default RegisterMain;
