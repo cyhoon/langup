@@ -21,15 +21,24 @@ export function signInRequest(email, password) {
 
         return axios.post(host + '/auth/local/signin', { email, password })
         .then((response) => {
-            console.log('response ', response);
-            return {
-                type: 'success'
+            const { status } = response.data; 
+
+            console.log('data: ', response.data.data);
+
+            switch (status) {
+                case 0: // 정상
+                    dispatch(signInSuccess(response.data.data));
+                    break;
+                case 10: // 계정을 찾을 수 없을 때
+                    dispatch(signInFailure('계정을 찾을 수 없습니다.'));
+                    break;
+                case 20: // 요청 파라미터 에러
+                    dispatch(signInFailure('클라이언트 오류'));
+                    break;
             }
+            // dispatch(signInSuccess(response));
         }).catch((error) => {
-            console.log('error ', error);
-            return {
-                type: 'fail'
-            }
+            dispatch(signInFailure('서버 오류'));
         });
     }
 };
@@ -40,16 +49,20 @@ export function signIn() {
     };
 };
 
-export function signInSuccess(user, token) {
+export function signInSuccess(data) {
+    const { token, refresh_token: refreshToken, user } = data;
+
     return {
         type: AUTH_LOGIN_SUCCESS,
+        token,
+        refreshToken,
         user,
-        token
     };
 };
 
-export function signInFailure() {
+export function signInFailure(message) {
     return {
-        type: AUTH_LOGIN_FAILURE
-    }
+        type: AUTH_LOGIN_FAILURE,
+        message,
+    };
 };

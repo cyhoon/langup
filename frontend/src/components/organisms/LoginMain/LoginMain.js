@@ -54,6 +54,7 @@ class LoginMain extends Component {
                         width='100%'
                         height='47px'
                         borderRadius='3px'
+                        fontSize='15px'
                         fontWeight='bold'
                         border='none'
                         outline='none'
