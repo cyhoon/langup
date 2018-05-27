@@ -45,7 +45,8 @@ export function signInRequest(email, password) {
 
 export function signIn() {
     return {
-        type: AUTH_LOGIN
+        type: AUTH_LOGIN,
+        loading: true,
     };
 };
 
@@ -54,6 +55,7 @@ export function signInSuccess(data) {
 
     return {
         type: AUTH_LOGIN_SUCCESS,
+        loading: false,
         token,
         refreshToken,
         user,
