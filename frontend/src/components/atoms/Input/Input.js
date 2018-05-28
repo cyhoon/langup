@@ -9,7 +9,9 @@ const Input = ({
   outline,
   border,
   borderRadius,
-  marginBottom
+  marginBottom,
+  value,
+  onChange
 }) => {
 
     const Input = styled.input`
@@ -24,7 +26,7 @@ const Input = ({
     `;
 
     return (
-        <Input type={type} />
+        <Input type={type} value={value} onChange={(e) => { onChange(e); } } />
     )
 };
 

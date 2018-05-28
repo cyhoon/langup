@@ -46,8 +46,18 @@ class LoginMain extends Component {
                     <Experience>{ this.props.experience }</Experience>
                 </Header>
                 <Body>
-                    <AuthBlock name='이메일' type='text' />
-                    <AuthBlock name='비밀번호' type='password' />
+                    <AuthBlock
+                        name='이메일'
+                        type='text'
+                        value={this.props.id}
+                        onChange={this.props.handleChangeInputId}
+                    />
+                    <AuthBlock
+                        name='비밀번호'
+                        type='password'
+                        value={this.props.pw}
+                        onChange={this.props.handleChangeInputPw}
+                    />
                     <Button
                         textColor='white'
                         backgroundColor='#03a87c'

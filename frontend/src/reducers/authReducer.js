@@ -3,7 +3,8 @@ import update from 'react-addons-update';
 
 const initialState = {
     login: {
-      status: 'INIT'
+      status: 'INIT',
+      loading: false,
     },
     register: {
       status: 'INIT',
@@ -26,13 +27,24 @@ const authReducer = (state, action) => {
         case types.AUTH_LOGIN:
             return update(state, {
                 login: {
-                    status: { $set: 'WAITING' }
+                    status: { $set: 'WAITING' },
+                    loading: { $set: true }
                 }
             });
         case types.AUTH_LOGIN_SUCCESS:
-            return action;
+            return update(state, {
+                login: {
+                    status: { $set: 'SUCCESS' },
+                    loading: { $set: false }
+                }
+            });
         case types.AUTH_LOGIN_FAILURE:
-            return state;
+            return update(state, {
+                login: {
+                    status: { $set: 'FAILURE' },
+                    loading: { $set: false }
+                }
+            });
         case types.AUTH_REGISTER:
             return state;
         case types.AUTH_REGISTER_SUCCESS:

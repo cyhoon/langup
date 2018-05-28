@@ -51,15 +51,12 @@ const Hyper = styled.span`
     text-align: right;
 `;
 
-const AuthTemplate = ({ url }) => {
+const AuthTemplate = ({ url, LoginContainer }) => {
     switch (url) {
     case '/login':
         return (<Container>
             <LocalAuth>
-                <LoginMain
-                    title='Langup'
-                    experience='오늘도 시작해 볼까요?'
-                />
+                {LoginContainer}
             </LocalAuth>
             <SocialAuth>
                 <Header><Title>또는</Title></Header>

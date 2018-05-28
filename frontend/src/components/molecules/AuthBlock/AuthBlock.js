@@ -13,7 +13,7 @@ const Experience = styled.div`
   margin-bottom: 10px;
 `;
 
-const AuthBlock = ({ name, type }) => {
+const AuthBlock = ({ name, type, value, onChange }) => {
   return (
     <Container>
       <Experience>{name}</Experience>
@@ -26,6 +26,8 @@ const AuthBlock = ({ name, type }) => {
         border='1px solid #c8c8c8'
         borderRadius='3px'
         marginBottom='10px'
+        value={value}
+        onChange={onChange}
         />
     </Container>
   );
