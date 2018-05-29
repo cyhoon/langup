@@ -17,21 +17,18 @@ class LoginContainer extends Component {
   }
 
   handleChangeInputId = (e) => {
-    const id = e.target.value;
-    this.setState({ id });
+    this.setState({ id: e.target.value });
   }
 
   handleChangeInputPw = (e) => {
-    const pw = e.target.value;
-    this.setState({ pw });
+    this.setState({ pw: e.target.value });
   }
 
-  handleLogin() {
+  handleLogin = () => {
       this.props.signInRequest(this.state.id, this.state.pw);
   }
 
   render() {
-      console.log('id: ', this.state.id)
       return (
           <div>
               <LoginMain

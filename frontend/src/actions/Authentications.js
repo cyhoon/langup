@@ -13,6 +13,9 @@ const host = 'http://localhost:4000';
 
 export function signInRequest(email, password) {
 
+    console.log('email: ', email);
+    console.log('password: ', password);
+
     return (dispatch) => {
         // return {
         //     type: AUTH_LOGIN
@@ -22,8 +25,6 @@ export function signInRequest(email, password) {
         return axios.post(host + '/auth/local/signin', { email, password })
         .then((response) => {
             const { status } = response.data; 
-
-            console.log('data: ', response.data.data);
 
             switch (status) {
                 case 0: // 정상

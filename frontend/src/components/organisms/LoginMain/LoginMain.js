@@ -68,6 +68,7 @@ class LoginMain extends Component {
                         fontWeight='bold'
                         border='none'
                         outline='none'
+                        handleClick={this.props.handleLogin}
                     >로그인</Button>
                 </Body>
             </Container>

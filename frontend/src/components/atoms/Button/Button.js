@@ -12,7 +12,8 @@ const Button = ({
     fontSize,
     fontWeight,
     outLine,
-    children
+    handleClick,
+    children,
  }) => {
     const DynamicButton = styled.button`
         background-color: ${backgroundColor? backgroundColor : 'inherit'};
@@ -31,7 +32,7 @@ const Button = ({
         outline: ${outLine ? outLine : 'undefined'};
     `;
     return (
-        <DynamicButton>{children}</DynamicButton>
+        <DynamicButton onClick={handleClick}>{children}</DynamicButton>
     );
 };
 
