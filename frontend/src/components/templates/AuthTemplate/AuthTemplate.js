@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import LoginMain from '../../organisms/LoginMain';
 import RegisterMain from '../../organisms/RegisterMain';
 import SocialBlock from '../../molecules/SocialBlock';
 

@@ -5,11 +5,6 @@ import { signInRequest } from '../actions/Authentications';
 import LoginMain from '../components/organisms/LoginMain';
 
 import { bindActionCreators } from 'redux';
-import { ClipLoader } from 'react-spinners';
-
-import styled from 'styled-components';
-
-import { loginValidator } from '../lib/validation';
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -27,14 +22,10 @@ class LoginContainer extends Component {
   }
 
   handleLogin = () => {
-    const validation = loginValidator(this.state.id, this.state.pw);
-
-    if (validation.status) {
-        console.log(validation.message);
-        return;
-    }
-
-    this.props.signInRequest(this.state.id, this.state.pw);
+      return this.props.signInRequest(this.state.id, this.state.pw)
+      .then(() => {
+        this.props.history.push('/');
+      });
   }
 
   render() {

@@ -8,19 +8,25 @@ import {
 } from './ActionTypes';
 
 import axios from 'axios';
+import { loginValidator } from '../lib/validation';
 
 const host = 'http://localhost:4000';
 
 export function signInRequest(email, password) {
-
-    console.log('email: ', email);
-    console.log('password: ', password);
 
     return (dispatch) => {
         // return {
         //     type: AUTH_LOGIN
         // };
         dispatch(signIn());
+
+        const validation = loginValidator(email, password);
+
+        if (validation.status) {
+            return new Promise((resolve, reject) => {
+                return dispatch(signInFailure(validation.message));
+            });
+        }
 
         return axios.post(host + '/auth/local/signin', { email, password })
         .then((response) => {
@@ -30,11 +36,9 @@ export function signInRequest(email, password) {
                 case 0: // 정상
                     dispatch(signInSuccess(response.data.data));
                     break;
-                case 10: // 계정을 찾을 수 없을 때
+                case 10: // 요청 파라미터 에러
+                case 20: // 계정을 찾을 수 없을 때
                     dispatch(signInFailure('계정을 찾을 수 없습니다.'));
-                    break;
-                case 20: // 요청 파라미터 에러
-                    dispatch(signInFailure('클라이언트 오류'));
                     break;
             }
             // dispatch(signInSuccess(response));
