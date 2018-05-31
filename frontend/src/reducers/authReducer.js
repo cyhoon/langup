@@ -49,9 +49,19 @@ const authReducer = (state, action) => {
         case types.AUTH_REGISTER:
             return state;
         case types.AUTH_REGISTER_SUCCESS:
-            return state;
+            return update(state, {
+                register: {
+                    status: { $set: 'SUCCESS' },
+                }
+            });
         case types.AUTH_REGISTER_FAILURE:
-            return state;
+            return update(state, {
+                register: {
+                    status: { $set: 'FAILURE' },
+                    messageOn: { $set: true },
+                    message: { $set: action.message },
+                }
+            });
         default:
             return state;
     }

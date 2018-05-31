@@ -37,6 +37,13 @@ const Body = styled.div`
   margin: 0 auto;
 `;
 
+const Message = styled.div`
+    margin-bottom: 10px;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+`;
+
 class RegisterMain extends Component {
     render() {
         return (
@@ -46,9 +53,28 @@ class RegisterMain extends Component {
                     <Experience>{ this.props.experience }</Experience>
                 </Header>
                 <Body>
-                    <AuthBlock name='이메일' type='text' />
-                    <AuthBlock name='비밀번호' type='password' />
-                    <AuthBlock name='이름' type='text' />
+                    <AuthBlock 
+                        name='이메일'
+                        type='text'
+                        value={this.props.id}
+                        onChange={this.props.handleChangeInputId}
+                    />
+                    <AuthBlock
+                        name='비밀번호'
+                        type='password'
+                        value={this.props.pw}
+                        onChange={this.props.handleChangeInputPw}
+                    />
+                    <AuthBlock
+                        name='이름'
+                        type='text'
+                        value={this.props.name}
+                        onChange={this.props.handleChangeInputName}
+                    />
+                    {
+                        this.props.messageOn ?
+                            <Message>{ this.props.message } </Message> : ''
+                    }
                     <Button
                         textColor='white'
                         backgroundColor='#03a87c'
@@ -59,6 +85,7 @@ class RegisterMain extends Component {
                         fontWeight='bold'
                         border='none'
                         outline='none'
+                        handleClick={this.props.handleRegister}
                     >회원가입</Button>
                 </Body>
             </Container>
