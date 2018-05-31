@@ -37,6 +37,13 @@ const Body = styled.div`
   margin: 0 auto;
 `;
 
+const Message = styled.div`
+    margin-bottom: 10px;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+`;
+
 class LoginMain extends Component {
     render() {
         return (
@@ -58,6 +65,10 @@ class LoginMain extends Component {
                         value={this.props.pw}
                         onChange={this.props.handleChangeInputPw}
                     />
+                    { 
+                        this.props.messageOn ? 
+                            <Message>{ this.props.message } </Message> : ''
+                    }
                     <Button
                         textColor='white'
                         backgroundColor='#03a87c'

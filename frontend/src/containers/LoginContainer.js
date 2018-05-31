@@ -35,6 +35,9 @@ class LoginContainer extends Component {
                 title='Langup'
                 experience='오늘도 시작해 볼까요?'
 
+                messageOn={this.props.messageOn}
+                message={this.props.message}
+
                 id={this.state.id}
                 pw={this.state.pw}
                 handleChangeInputId={this.handleChangeInputId}
@@ -47,8 +50,8 @@ class LoginContainer extends Component {
 };
 
 const mapStateToProps = ({ auth }) => {
-    const { status, loading } = auth.login;
-    return { status, loading };
+    const { status, messageOn, message } = auth.login;
+    return { status, messageOn, message };
 };
 
 const mapDispatchToProps = (dispatch) => {
