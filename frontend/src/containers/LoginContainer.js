@@ -9,6 +9,8 @@ import { ClipLoader } from 'react-spinners';
 
 import styled from 'styled-components';
 
+import { loginValidator } from '../lib/validation';
+
 class LoginContainer extends Component {
   constructor(props) {
       super(props);
@@ -25,7 +27,14 @@ class LoginContainer extends Component {
   }
 
   handleLogin = () => {
-      this.props.signInRequest(this.state.id, this.state.pw);
+    const validation = loginValidator(this.state.id, this.state.pw);
+
+    if (validation.status) {
+        console.log(validation.message);
+        return;
+    }
+
+    this.props.signInRequest(this.state.id, this.state.pw);
   }
 
   render() {
