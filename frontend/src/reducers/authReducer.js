@@ -36,6 +36,12 @@ const authReducer = (state, action) => {
             return update(state, {
                 login: {
                     status: { $set: 'SUCCESS' },
+                },
+                status: {
+                    isLoggedIn: { $set: true },
+                    token: action.token,
+                    refreshToken: action.refreshToken,
+                    user: action.user,
                 }
             });
         case types.AUTH_LOGIN_FAILURE:
@@ -52,6 +58,12 @@ const authReducer = (state, action) => {
             return update(state, {
                 register: {
                     status: { $set: 'SUCCESS' },
+                },
+                status: {
+                    isLoggedIn: { $set: true },
+                    token: action.token,
+                    refreshToken: action.refreshToken,
+                    user: action.user,
                 }
             });
         case types.AUTH_REGISTER_FAILURE:
