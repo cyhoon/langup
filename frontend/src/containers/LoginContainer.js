@@ -24,7 +24,7 @@ class LoginContainer extends Component {
   handleLogin = () => {
       return this.props.signInRequest(this.state.id, this.state.pw)
       .then(() => {
-        this.props.history.push('/');
+        if (this.props.status === 'SUCCESS') { this.props.history.push('/'); }
       });
   }
 

@@ -8,6 +8,8 @@ import {
 } from './ActionTypes';
 
 import axios from 'axios';
+
+import { encryptionSha512 } from '../lib/crypto';
 import { loginValidator } from '../lib/validation';
 
 const host = 'http://localhost:4000';
@@ -28,7 +30,9 @@ export function signInRequest(email, password) {
             });
         }
 
-        return axios.post(host + '/auth/local/signin', { email, password })
+        const cypherText = encryptionSha512(password);
+
+        return axios.post(host + '/auth/local/signin', { email, password: cypherText })
         .then((response) => {
             const { status } = response.data; 
 
