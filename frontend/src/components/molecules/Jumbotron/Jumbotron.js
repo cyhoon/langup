@@ -11,7 +11,7 @@ const Container = styled.div`
 
     border-radius: 3px;
 
-    background-color: #eee;
+    // background-color: #eee;
 `;
 
 const TextComponent = styled.div`
@@ -22,7 +22,8 @@ const TextComponent = styled.div`
 
     float: left;
 
-    padding: 40px;
+    padding-top: 180px;
+    // padding: 40px;
 `;
 
 const SubTitle = styled.span`
@@ -60,12 +61,13 @@ const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
                 </div>
                 <Button
                     textColor="white"
-                    backgroundColor="#252726"
-                    width="27%"
-                    height="37px"
+                    backgroundColor="#03a87c"
+                    width="36%"
+                    height="43px"
                     fontSize="14px"
-                    fontWeight="bold"
+                    fontWeight="600"
                     borderRadius="5px"
+                    borderColor="#03a87c"
                 >{ buttonText }</Button>
             </TextComponent>
             <ImageComponent />

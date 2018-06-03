@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Particles from 'react-particles-js';
+
 const Header = styled.div`
     width: 100%;
-    height: 90px;
+    // height: 90px;
 
     margin-top: 10px;
     margin-bottom: 10px;
@@ -38,6 +40,26 @@ const MakeYourDictionary = styled.div`
     margin: 0 auto;
 `;
 
+const IntroduceContainer = styled.div`
+    position: relative;
+
+    display: block;
+    width: 100%;
+    height: 600px;
+    background-color: #1c272b;
+
+    color: white;
+`
+
+const IntroduceService = styled.div`
+    position: relative;
+    z-index: 30;
+    display: block;
+    width: 1000px !important;
+    height: inherit;
+    margin: 0 auto;
+`;
+
 const PageTemplate = ({ header, children }) => {
     return (
         <div>
@@ -45,10 +67,28 @@ const PageTemplate = ({ header, children }) => {
                 { header }
             </Header>
             <Main>
-                <MakeYourDictionary>{ children }</MakeYourDictionary>
-                <Section>
-                    
-                </Section>
+                <IntroduceContainer>
+                    <IntroduceService>
+                        <IntroduceService>
+                            { children }
+                        </IntroduceService>
+                    </IntroduceService>
+                    <Particles
+                        params={{
+                            particles: {
+                                number: {
+                                    value: "60"
+                                },
+                            }
+                        }}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            position: 'absolute',
+                            top: '0',
+                        }}
+                    />
+                </IntroduceContainer>
             </Main>
         </div>
     );

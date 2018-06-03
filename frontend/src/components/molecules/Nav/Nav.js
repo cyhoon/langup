@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import NavItem from '../../atoms/NavItem';
 
 const Container = styled.div`
-    float: right;
+    display: inline-block;
 `;
 
 class Nav extends Component {

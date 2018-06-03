@@ -36,6 +36,21 @@ const Right = styled.div`
 
 const NavContainer = styled.div`
     width: 100%;
+    text-align: right;
+`;
+
+const ActivateContainer = styled.div`
+    display: inline-block;
+`;
+
+const Activate = styled.p`
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    color: #03a87c;
 `;
 
 class Header extends Component {
@@ -46,6 +61,9 @@ class Header extends Component {
                     <Logo>Langup</Logo>
                     <NavContainer>
                         <Nav />
+                        <ActivateContainer>
+                            <Activate>로그인하기</Activate>
+                        </ActivateContainer>
                     </NavContainer>
                 </HeaderContainer>
                 {/* <NavContainer>

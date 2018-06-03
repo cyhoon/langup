@@ -8,7 +8,8 @@ const Container = styled.div`
 const Item = styled.p`
     display: inline-block;
 
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
 
     font-size: 15px;
     font-weight: lighter;
