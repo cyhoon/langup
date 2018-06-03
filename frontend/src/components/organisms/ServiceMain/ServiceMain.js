@@ -17,12 +17,8 @@ const Title = styled.span`
 
 const ServiceBlockContainer = styled.div`
     display: block;
-
     width: 1000px;
-    height: 300px;
-
     margin: 0 auto;
-    margin-bottom: 50px;
 `;
 
 const ServiceMain = () => {

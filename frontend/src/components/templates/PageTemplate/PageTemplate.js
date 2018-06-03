@@ -60,15 +60,6 @@ const IntroduceService = styled.div`
     margin: 0 auto;
 `;
 
-const Separate = styled.span`
-    display: block;
-    width: 42px;
-    height: 3px;
-    background-color: #4a4a4a;
-    margin-top: 21px;
-    margin-bottom: 21px;
-`;
-
 const PageTemplate = ({ header, children }) => {
     return (
         <div>

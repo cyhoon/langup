@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
 
@@ -16,11 +17,6 @@ const HeaderContainer = styled.div`
 
 const Left = styled.div`
     line-height: 50px;
-`;
-
-const Link = styled.a`
-    cursor: pointer;
-    color: #848484;
 `;
 
 const Logo = styled.span`
@@ -62,7 +58,7 @@ class Header extends Component {
                     <NavContainer>
                         <Nav />
                         <ActivateContainer>
-                            <Activate>로그인하기</Activate>
+                            <Activate><Link to='/login'>로그인하기</Link></Activate>
                         </ActivateContainer>
                     </NavContainer>
                 </HeaderContainer>
