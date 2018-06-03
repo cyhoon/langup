@@ -24,7 +24,17 @@ class LoginContainer extends Component {
   handleLogin = () => {
       return this.props.signInRequest(this.state.id, this.state.pw)
       .then(() => {
-        if (this.props.status === 'SUCCESS') { this.props.history.push('/'); }
+        if (this.props.status === 'SUCCESS') {
+            let loginData = {
+                isLoggedIn: true,
+                token: this.props.token,
+                refreshToken: this.props.refreshToken,
+            };
+
+            document.cookie = 'key=' + btoa(JSON.stringify(loginData));
+            this.props.history.push('/');
+            return true;
+        }
       });
   }
 
@@ -51,7 +61,12 @@ class LoginContainer extends Component {
 
 const mapStateToProps = ({ auth }) => {
     const { status, messageOn, message } = auth.login;
-    return { status, messageOn, message };
+    const { isLoggedIn, token, refreshToken, user } = auth.status;
+
+    return {
+        status, messageOn, message,
+        ...auth.status
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
