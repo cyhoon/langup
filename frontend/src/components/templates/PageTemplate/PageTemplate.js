@@ -77,10 +77,44 @@ const PageTemplate = ({ header, children }) => {
                         params={{
                             particles: {
                                 number: {
-                                    value: "60"
+                                    value: "80",
+                                    density: {
+                                        enable: true,
+                                        value_area: "800"
+                                    }
                                 },
+                                move: {
+                                    enable: true,
+                                    speed: "10",
+                                    direction: "none",
+                                    random: false
+                                },
+                            },
+                            interactivity: {
+                                detect_on: "canvas",
+                                events: {
+                                  onhover: {
+                                    enable: true,
+                                    mode: "repulse"
+                                  },
+                                  onclick: {
+                                    enable: true,
+                                    mode: "push"
+                                  },
+                                  resize: true
+                                },
+                                modes: {
+                                    repulse: {
+                                      distance: 100,
+                                      duration: 0.4
+                                    },
+                                    push: {
+                                      particles_nb: 5
+                                    },
+                                }
                             }
                         }}
+
                         style={{
                             width: '100%',
                             height: '100%',
