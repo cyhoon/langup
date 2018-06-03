@@ -11,10 +11,7 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-    display: grid;
-    grid-template-columns: 15% 70% 15%;
-
-    position: relative;
+    display: flex;
 `;
 
 const Left = styled.div`
@@ -27,7 +24,6 @@ const Link = styled.a`
 `;
 
 const Logo = styled.span`
-    text-align: center;
     font-weight: bold;
     font-size: 32px;
     cursor: pointer;
@@ -39,7 +35,6 @@ const Right = styled.div`
 `;
 
 const NavContainer = styled.div`
-    display: block;
     width: 100%;
 `;
 
@@ -48,26 +43,14 @@ class Header extends Component {
         return (
             <Container>
                 <HeaderContainer>
-                    <Left>
-                        <Link onClick={ () => { alert('go'); } }>단어장 보러 가기</Link>
-                    </Left>
                     <Logo>Langup</Logo>
-                    <Right>
-                        <Button
-                            textColor="#03a87c"
-                            color="#03a87c"
-                            borderColor="#03a87c"
-                            width="70%"
-                            height="34px"
-                            borderRadius="3px"
-                            fontSize="14px"
-                            fontWeight="bold"
-                        >로그인하기</Button>
-                    </Right>
+                    <NavContainer>
+                        <Nav />
+                    </NavContainer>
                 </HeaderContainer>
-                <NavContainer>
+                {/* <NavContainer>
                     <Nav />
-                </NavContainer>
+                </NavContainer> */}
             </Container>
         );
     }

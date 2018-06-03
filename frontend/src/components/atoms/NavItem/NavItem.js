@@ -5,11 +5,10 @@ const Container = styled.div`
     display: inline-block;
 `;
 
-const Item = styled.span`
+const Item = styled.p`
     display: inline-block;
 
     margin-left: 30px;
-    margin-right: 30px;
 
     font-size: 15px;
     font-weight: lighter;

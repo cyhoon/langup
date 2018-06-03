@@ -4,12 +4,7 @@ import styled from 'styled-components';
 import NavItem from '../../atoms/NavItem';
 
 const Container = styled.div`
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-
-    color: #757575;
-    text-align: center;
+    float: right;
 `;
 
 class Nav extends Component {
