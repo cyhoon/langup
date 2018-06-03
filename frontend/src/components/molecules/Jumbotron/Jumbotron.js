@@ -7,7 +7,6 @@ const Container = styled.div`
     height: inherit;
 
     margin: 0 auto;
-    margin-bottom: 30px;
 
     border-radius: 3px;
 

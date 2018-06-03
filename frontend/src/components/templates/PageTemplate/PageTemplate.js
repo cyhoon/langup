@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import Particles from 'react-particles-js';
 
+import ServiceMain from '../../organisms/ServiceMain';
+
 const Header = styled.div`
     width: 100%;
     // height: 90px;
@@ -23,8 +25,6 @@ const Section = styled.div`
     display: block;
     width: 1000px;
     margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
 `; 
 
 // const PopularWords = styled.div`
@@ -58,6 +58,15 @@ const IntroduceService = styled.div`
     width: 1000px !important;
     height: inherit;
     margin: 0 auto;
+`;
+
+const Separate = styled.span`
+    display: block;
+    width: 42px;
+    height: 3px;
+    background-color: #4a4a4a;
+    margin-top: 21px;
+    margin-bottom: 21px;
 `;
 
 const PageTemplate = ({ header, children }) => {
@@ -123,6 +132,9 @@ const PageTemplate = ({ header, children }) => {
                         }}
                     />
                 </IntroduceContainer>
+                <Section>
+                    <ServiceMain />
+                </Section>
             </Main>
         </div>
     );
