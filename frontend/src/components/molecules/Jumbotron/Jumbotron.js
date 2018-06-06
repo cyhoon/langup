@@ -16,10 +16,8 @@ const Container = styled.div`
 const TextComponent = styled.div`
     display: block;
 
-    width: 50%;
+    width: 100%;
     height: 100%;
-
-    float: left;
 
     padding-top: 180px;
     // padding: 40px;
@@ -37,19 +35,19 @@ const MainTitle = styled.h3`
 `;
 
 const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
-    const ImageComponent = styled.div`
-        float: right;
+    // const ImageComponent = styled.div`
+    //     float: right;
 
-        display: block;
+    //     display: block;
 
-        width: 50%;
-        height: 100%;
+    //     width: 50%;
+    //     height: 100%;
 
-        background-image: url(${imagePath});
-        background-position: right bottom;
-        background-repeat: no-repeat!important;
-        background-size: contain!important;
-    `;
+    //     background-image: url(${imagePath});
+    //     background-position: right bottom;
+    //     background-repeat: no-repeat!important;
+    //     background-size: contain!important;
+    // `;
 
     return (
         <Container>
@@ -61,7 +59,7 @@ const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
                 <Button
                     textColor="white"
                     backgroundColor="#03a87c"
-                    width="36%"
+                    width="26%"
                     height="43px"
                     fontSize="14px"
                     fontWeight="600"
@@ -69,7 +67,7 @@ const Jumbotron = ({ subText, mainText, buttonText, imagePath }) => {
                     borderColor="#03a87c"
                 >{ buttonText }</Button>
             </TextComponent>
-            <ImageComponent />
+            {/* <ImageComponent /> */}
         </Container>
     );
 }
