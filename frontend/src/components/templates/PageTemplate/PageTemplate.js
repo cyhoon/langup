@@ -124,7 +124,7 @@ const PageTemplate = ({ header, children }) => {
                     />
                 </IntroduceContainer>
                 <Section>
-                    <ServiceMain />
+                    {/* <ServiceMain /> */}
                 </Section>
             </Main>
         </div>

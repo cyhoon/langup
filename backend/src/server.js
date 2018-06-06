@@ -39,7 +39,7 @@ class RestServer {
         this.app = new Koa();
         this.router = new KoaRouter();
 
-        this.configration();
+        this.configuration();
         this.middleware();
     }
 
@@ -47,7 +47,7 @@ class RestServer {
      * Configration Rest Server
      */
 
-    configration() {
+    configuration() {
         this.app.use((ctx, next) => {
             ctx.set('Access-Control-Allow-Credentials', true);
             ctx.set('Access-Control-Allow-Headers', 'Origin, x-access-token, X-Requested-With, Content-Type, Accept, x-timebase, Link');
@@ -63,7 +63,7 @@ class RestServer {
     }
 
     /**
-     * Configration Rest Server Router
+     * configuration Rest Server Router
      */
 
     middleware() {
