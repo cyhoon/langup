@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../../atoms/Button';
 
 const Container = styled.div`
     width: 100%;
     // height: 100px;
 
     margin-top: 50px;
+    margin-bottom: 25px;
     border-bottom: 0.5px solid #eee;
 
     display: flex;
 `;
 
 const TextContainer = styled.div`
-    flex: 2
+    flex: 10
 `;
 
 const Title = styled.h1`
@@ -27,15 +29,24 @@ const ButtonContainer = styled.div`
     flex: 1;
 `;
 
-const InformationMain = () => {
+const InformationMain = ({ title, explanation, buttonText }) => {
     return (
         <Container>
             <TextContainer>
-                <Title>나만의 단어장</Title>
-                <Explanation>회원님만의 단어장을 보여줍니다</Explanation>
+                <Title>{ title }</Title>
+                <Explanation>{ explanation }</Explanation>
             </TextContainer>
             <ButtonContainer>
-                <button>단어장 추가</button>
+                <Button
+                    textColor="white"
+                    backgroundColor="#03a87c"
+                    width="100%"
+                    height="38px"
+                    fontSize="14px"
+                    fontWeight="600"
+                    borderRadius="5px"
+                    borderColor="#03a87c"
+                >{ buttonText }</Button>
             </ButtonContainer>
         </Container>
     );
