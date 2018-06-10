@@ -11,16 +11,14 @@ class WordBookListContainer extends Component {
         super(props);
     }
 
-    componentWillMount = async () => {
-        console.log('component will mount');
-    
-        this.props.myWordListRequest();
-    }
+    componentDidMount = async () => { this.props.myWordListRequest(); }
 
     render() {
         return (
             <div>
-                <WordBookMain />
+                <WordBookMain
+                    list={this.props.list}
+                />
             </div>
         );
     }

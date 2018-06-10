@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import WordBookBlock from '../../molecules/WordBookBlock';
 
 const Container = styled.div`
-    // display: flex;
-    // flew-wrap: wrap;
-
     width: 100%;
 `;
 
@@ -20,23 +17,15 @@ const Column = styled.div`
 
 class WordBookMain extends Component {
     render() {
+        const myBookList = this.props.list.map(
+            (data, i) => {
+                return <WordBookBlock />
+            }
+        );
+
         return (
             <Container>
-                <Column>
-                    <WordBookBlock right='10px' />
-                    <WordBookBlock left='10px' right='10px' />
-                    <WordBookBlock left='10px' />
-                </Column>
-                <Column>
-                    <WordBookBlock right='10px' />
-                    <WordBookBlock left='10px' right='10px' />
-                    <WordBookBlock left='10px' />
-                </Column>
-                <Column>
-                    <WordBookBlock right='10px' />
-                    <WordBookBlock left='10px' right='10px' />
-                    <WordBookBlock left='10px' />
-                </Column>
+                {myBookList}
             </Container>
         );
     }

@@ -5,7 +5,7 @@ import Image from '../../atoms/Image';
 
 const WordBookBlock = ({ left, right }) => {
     const Container = styled.div`
-        display: flex;
+        display: inline-flex;
         flex-direction: column;
 
         width: 33.33333333% !important;
@@ -20,6 +20,9 @@ const WordBookBlock = ({ left, right }) => {
 
         margin-left: ${left};
         margin-right: ${right};
+
+        // margin-left: ${ left ? left : '10px' };
+        // margin-right: ${ right ? right: '10px' };
     `;
 
     const ImageContainer = styled.div`
