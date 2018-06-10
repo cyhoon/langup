@@ -1,5 +1,7 @@
 import {
     MY_WORD_BOOK_LIST,
+    MY_WORD_BOOK_LIST_SUCCESS,
+    MY_WORD_BOOK_LIST_FAILURE,
 } from './ActionTypes';
 
 import axios from 'axios';
@@ -14,9 +16,32 @@ export function myWordListRequest() {
 
         return axios.get(host + '/user/me/vocabulary', headers)
         .then((response) => {
-            console.log('데이터: ', response);
+            const { status } = response.data;
+
+            switch (status) {
+                case 0: // 정상
+                    dispatch(myWordListSuccess(response.data.data));
+                    break;
+                default:
+                    dispatch(myWordListFailure('서버 오류'));
+                    break;
+            }
         }).catch((error) => {
-            console.log('데이터를 못 가지고 왔을 때');
+            dispatch(myWordListFailure('서버 오류'));
         });
     }
 };
+
+export function myWordListSuccess(list) {
+    return {
+        type: MY_WORD_BOOK_LIST_SUCCESS, 
+        list,
+    };
+}
+
+export function myWordListFailure(message) {
+    return {
+        type: MY_WORD_BOOK_LIST_FAILURE,
+        message,
+    };
+}

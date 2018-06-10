@@ -11,14 +11,13 @@ class WordBookListContainer extends Component {
         super(props);
     }
 
-    componentWillMount() {
+    componentWillMount = async () => {
         console.log('component will mount');
+    
+        this.props.myWordListRequest();
     }
 
     render() {
-
-        this.props.myWordListRequest();
-
         return (
             <div>
                 <WordBookMain />
@@ -27,8 +26,8 @@ class WordBookListContainer extends Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    console.log('state: ', state);
+const mapStateToProps = ({ word }) => {
+    return { ...word.myBook };
 };
 
 const mapDispatchToProps = (dispatch) => {
