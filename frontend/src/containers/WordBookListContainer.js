@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import { myWordListRequest } from '../actions/word';
 
+import WordBookMain from '../components/organisms/WordBookMain';
+
 class WordBookListContainer extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,7 @@ class WordBookListContainer extends Component {
 
         return (
             <div>
-                WordBookListContainer
+                <WordBookMain />
             </div>
         );
     }
