@@ -31,7 +31,10 @@ class LoginContainer extends Component {
                 refreshToken: this.props.refreshToken,
             };
 
-            document.cookie = 'key=' + btoa(JSON.stringify(loginData));
+            // document.cookie = 'key=' + btoa(JSON.stringify(loginData));
+            // document.cookie.token = this.props.token;
+            document.cookie = 'token='+this.props.token;
+
             this.props.history.push('/');
             return true;
         }

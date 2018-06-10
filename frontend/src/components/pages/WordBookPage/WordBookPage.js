@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import HeaderContainer from '../../../containers/HeaderContainer';
 import PageTemplate from '../../templates/PageTemplate';
 import InformationMain from '../../organisms/InformationMain';
+import WordBookListContainer from '../../../containers/WordBookListContainer';
 
 const Container = styled.div`
     display: block;
@@ -24,6 +25,7 @@ const WordBookPage = () => {
                     explanation="회원님의 단어장을 보여 줍니다"
                     buttonText="단어장 추가"
                 />
+                <WordBookListContainer />
             </Container>
         </PageTemplate>
     );
