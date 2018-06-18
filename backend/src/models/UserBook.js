@@ -46,6 +46,9 @@ module.exports = (sequelize, DataTypes) => {
             where: {
                 userEmail,
             },
+            order: [
+                ['createDate', 'DESC'],
+            ],
             raw: true,
         });
     }

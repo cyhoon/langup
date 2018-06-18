@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import Image from '../../atoms/Image';
 
-const WordBookBlock = ({ left, right }) => {
+const WordBookBlock = ({ idx, title, userEmail, createDate, left, right }) => {
     const Container = styled.div`
         display: inline-flex;
         flex-direction: column;
 
-        width: 33.33333333% !important;
+        // width: 33.33333333% !important;
+        width: 32% !important;
         height: 250px;
 
         border: 1px solid #eee;
@@ -18,11 +19,12 @@ const WordBookBlock = ({ left, right }) => {
 
         position: relative;
 
-        margin-left: ${left};
-        margin-right: ${right};
-
+        // margin-left: ${left};
+        // margin-right: ${right};
         // margin-left: ${ left ? left : '10px' };
         // margin-right: ${ right ? right: '10px' };
+        margin-right: ${ right ? right: '2%' };
+        margin-bottom: 2%;
     `;
 
     const ImageContainer = styled.div`
@@ -103,14 +105,14 @@ const WordBookBlock = ({ left, right }) => {
             </ImageContainer>
             <TextContainer>
                 <BookInformation>
-                    <Title>단어장 (2018-05-25)</Title>
-                    <Experience>2018-05-25 날짜로 검색한 단어 기록</Experience>
+                    <Title>{title}</Title>
+                    <Experience>{createDate} 날짜로 검색한 단어 기록</Experience>
                 </BookInformation>
                 <AuthorContainer>
                     <ProfileImage />
                     <AuthorExperience>
-                        <Author>ihello0720@gmail.com</Author>
-                        <MakeDate>2018-03-21</MakeDate>
+                        <Author>{userEmail}</Author>
+                        <MakeDate>{createDate}</MakeDate>
                     </AuthorExperience>
                 </AuthorContainer>
             </TextContainer>

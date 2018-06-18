@@ -19,7 +19,26 @@ class WordBookMain extends Component {
     render() {
         const myBookList = this.props.list.map(
             (data, i) => {
-                return <WordBookBlock />
+                i++;
+
+                console.log('data: ', data);
+
+                if (i % 3 === 0) {
+                    return <WordBookBlock
+                        idx={data.idx}
+                        title={data.title}
+                        userEmail={data.user_email}
+                        createDate={data.create_date}
+                        right="0"
+                    />
+                }
+
+                return <WordBookBlock
+                    idx={data.idx}
+                    title={data.title}
+                    userEmail={data.user_email}
+                    createDate={data.create_date}
+                />
             }
         );
 
