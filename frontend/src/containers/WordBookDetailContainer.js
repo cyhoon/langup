@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import InformationMain from '../components/organisms/InformationMain';
 
 import { myWordBookShowRequest } from '../actions/word';
+import WordMain from '../components/organisms/WordMain';
 
 class WordBookDetailContainer extends Component {
     constructor(props) {
@@ -21,6 +22,9 @@ class WordBookDetailContainer extends Component {
                     title={`${this.props.title}`}
                     explanation={`${this.props.createDate}`}
                     buttonText="수정하기"
+                />
+                <WordMain
+                    userWords={this.props.userWords}
                 />
             </div>
         );
