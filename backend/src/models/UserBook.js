@@ -53,6 +53,39 @@ module.exports = (sequelize, DataTypes) => {
         });
     }
 
+    UserBook.selectByVocabulary = (models, idx, userEmail) => {
+        // return sequelize.query(`
+        //     SELECT word, kor_word FROM user_word
+        //     LEFT JOIN mean_dictionary on user_word.word = mean_dictionary.eng_word
+        //     WHERE user_word.user_book_idx IN (
+        //         SELECT idx FROM user_book
+        //         WHERE user_book.idx = ${idx} AND user_book.user_email = '${userEmail}'
+        //     );
+        // `, {
+        //     nested: false,
+        //     model: models.UserWord,
+        //     type: sequelize.QueryTypes.SELECT
+        // });
+        return UserBook.find({
+            include: [
+                {
+                    // attributes: [
+                    //     [sequelize.literal(`(SELECT kor_word FROM mean_dictionary WHERE mean_dictionary.eng_word = userwords.word LIMIT 1)`), 'kor_words'],
+                    //     'word',
+                    //     'create_time',
+                    // ],
+                    model: models.UserWord,
+                    raw: true,
+                }
+            ],
+            where: {
+                idx,
+                userEmail,
+            },
+            // raw: true,
+        });
+    }
+
     UserBook.getUserBook = (idx, userEmail) => {
         return UserBook.findOne({
             where: {

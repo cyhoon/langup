@@ -76,9 +76,9 @@ change-case@^2.3.0:
     upper-case "^1.1.1"
     upper-case-first "^1.1.0"
 
-change-object-case@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/change-object-case/-/change-object-case-0.1.1.tgz#9efe56eb71f411923d7ccff76881874522392531"
+change-object-case@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/change-object-case/-/change-object-case-0.2.0.tgz#29e0834177d73424aa036ec5588977ee466f4f11"
   dependencies:
     change-case "^2.3.0"
 

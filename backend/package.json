@@ -9,7 +9,7 @@
   "author": "jeffchoi",
   "license": "MIT",
   "dependencies": {
-    "change-object-case": "^0.1.1",
+    "change-object-case": "^0.2.0",
     "dotenv": "^5.0.1",
     "joi": "^13.1.2",
     "joi-date-extensions": "^1.1.1",

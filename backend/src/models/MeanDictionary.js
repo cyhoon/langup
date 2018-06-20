@@ -29,5 +29,17 @@ module.exports = (sequelize, DataTypes) => {
         // models.MeanDictionary.belongsTo(models.KorDictionary, { foreignKey: 'kor_word' });
     };
 
+    MeanDictionary.selectByMean = (eng_word) => {
+        return MeanDictionary.findAll({
+            attributes: [
+                'kor_word',
+            ],
+            where: {
+                eng_word,
+            },
+            raw: true,
+        });
+    };
+
     return MeanDictionary;
 }

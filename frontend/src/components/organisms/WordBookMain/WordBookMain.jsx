@@ -21,8 +21,6 @@ class WordBookMain extends Component {
             (data, i) => {
                 i++;
 
-                console.log('data: ', data);
-
                 if (i % 3 === 0) {
                     return <WordBookBlock
                         idx={data.idx}

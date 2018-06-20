@@ -54,7 +54,7 @@ class Header extends Component {
         return (
             <Container>
                 <HeaderContainer>
-                    <Logo>Langup</Logo>
+                    <Logo><Link to='/'>Langup</Link></Logo>
                     <NavContainer>
                         <Nav />
                         <ActivateContainer>
