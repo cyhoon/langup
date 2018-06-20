@@ -11,7 +11,7 @@ class WordBookListContainer extends Component {
         super(props);
     }
 
-    componentDidMount = async () => { this.props.myWordListRequest(); }
+    componentDidMount = () => { this.props.myWordListRequest(); }
 
     render() {
         return (

@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import InformationMain from '../components/organisms/InformationMain';
+
+import { myWordBookShowRequest } from '../actions/word';
 
 class WordBookDetailContainer extends Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount = async () => {
+        this.props.myWordBookShowRequest(this.props.bookIdx);
+    }
+
     render() {
         return (
             <div>
-                WordBookDetailContainer
+                <InformationMain
+                    title={`${this.props.title}`}
+                    explanation={`${this.props.createDate}`}
+                    buttonText="수정하기"
+                />
             </div>
         );
     };
 };
 
-const mapStateToProps = () => {
-
+const mapStateToProps = ({ word }) => {
+    return { ...word.focusBook };
 };
 
 const mapDispatchToProps = (dispatch) => {
-
+    return bindActionCreators({ myWordBookShowRequest }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordBookDetailContainer);
