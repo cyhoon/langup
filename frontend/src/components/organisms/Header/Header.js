@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Button from '../../atoms/Button';
 
 import Nav from '../../molecules/Nav';
+import UserController from '../UserController/UserController';
 
 const Container = styled.div`
     margin: 0 auto;
@@ -59,6 +60,9 @@ class Header extends Component {
                         <Nav />
                         <ActivateContainer>
                             <Activate><Link to='/login'>로그인하기</Link></Activate>
+                            <Activate>
+                                <UserController />
+                            </Activate>
                         </ActivateContainer>
                     </NavContainer>
                 </HeaderContainer>
