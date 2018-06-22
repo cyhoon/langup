@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
     UserBook.associate = (models) => {
         models.UserBook.belongsTo(models.User, { foreignKey: 'userEmail' });
-        models.UserBook.hasMany(models.UserWord, { foreignKey: 'userBookIdx' });
+        models.UserBook.hasMany(models.UserWord, { as:'words', foreignKey: 'userBookIdx' });
     }
 
     UserBook.selectByUserBookToday = (models, userEmail, nowDate) => {
@@ -66,22 +66,29 @@ module.exports = (sequelize, DataTypes) => {
         //     model: models.UserWord,
         //     type: sequelize.QueryTypes.SELECT
         // });
-        return UserBook.find({
+        return UserBook.findOne({
             include: [
                 {
                     // attributes: [
-                    //     [sequelize.literal(`(SELECT kor_word FROM mean_dictionary WHERE mean_dictionary.eng_word = userwords.word LIMIT 1)`), 'kor_words'],
+                    //     // [sequelize.literal(`(SELECT kor_word FROM mean_dictionary WHERE mean_dictionary.eng_word = userwords.word LIMIT 1)`), 'kor_words'],
                     //     'word',
                     //     'create_time',
                     // ],
+                    // model: models.UserWord,
                     model: models.UserWord,
-                    raw: true,
+                    as: 'words',
+                    order: [
+                        ['create_time', 'DESC'],
+                    ],
                 }
             ],
             where: {
                 idx,
                 userEmail,
             },
+            // order: [
+            //     ['user_word.create_time', 'DESC']
+            // ],
             // raw: true,
         });
     }

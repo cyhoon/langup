@@ -6,8 +6,8 @@ const Container = styled.div`
     width: 100%;
 `;
 
-const WordMain = ({ userWords }) => {
-    const wordList = userWords.map(userWord => {
+const WordMain = ({ words }) => {
+    const wordList = words.reverse().map(userWord => {
         return <WordBlock userWord={userWord} />
     });
 

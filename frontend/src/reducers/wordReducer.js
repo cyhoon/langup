@@ -13,7 +13,7 @@ const initialState = {
         idx: null,
         title: 'LOADING ...',
         createDate: 'LOADING ...',
-        userWords: [],
+        words: [],
     },
 };
 
@@ -44,7 +44,7 @@ const wordReducer = (state, action) => {
                     idx: { $set: action.idx },
                     title: { $set: action.title },
                     createDate: { $set: action.create_date },
-                    userWords: { $set: action.user_words }
+                    words: { $set: action.words }
                 }
             });
         case types.MY_WORD_BOOK_SHOW_FAILURE:

@@ -40,14 +40,14 @@ exports.show = async (ctx, err) => {
       response.message = '단어장을 볼 수 없습니다';
     } else {
       let vocabulary = await models.UserBook.selectByVocabulary(models, bookIdx, userEmail);
-
+      console.info('vocabulary: ', vocabulary);
       /**
        * *** 나중에 다시 수정해 보자. ***
        * 
        * 배열에서의 비동기 문제
        * 해결 URL: https://stackoverflow.com/questions/40140149/use-async-await-with-array-map
        */
-      await Promise.all(vocabulary.UserWords.map(async (userWord) => {
+      await Promise.all(vocabulary.words.map(async (userWord) => {
         const means = await models.MeanDictionary.selectByMean(userWord.word);
         userWord.dataValues.means = means;
       }));
@@ -58,6 +58,7 @@ exports.show = async (ctx, err) => {
       ctx.body = response;
     }
   } catch (error) {
+    console.error('error: ', error);
     response.status = 500;
     response.message = '서버 에러';
     ctx.status = 500;

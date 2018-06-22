@@ -24,7 +24,7 @@ class WordBookDetailContainer extends Component {
                     buttonText="수정하기"
                 />
                 <WordMain
-                    userWords={this.props.userWords}
+                    words={this.props.words}
                 />
             </div>
         );

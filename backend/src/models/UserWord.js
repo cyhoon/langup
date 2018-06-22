@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     UserWord.associate = (models) => {
-        models.UserWord.belongsTo(models.UserBook, { foreignKey: 'userBookIdx' });
+        models.UserWord.belongsTo(models.UserBook, { as: 'words', foreignKey: 'userBookIdx' });
     }
 
     return UserWord;
