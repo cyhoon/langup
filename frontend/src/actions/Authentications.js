@@ -1,4 +1,7 @@
 import {
+    IS_LOGIN,
+    IS_LOGIN_SUCCESS,
+    IS_LOGIN_FAILURE,
     AUTH_LOGIN,
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
@@ -11,8 +14,41 @@ import axios from 'axios';
 
 import { encryptionSha512 } from '../lib/crypto';
 import { loginValidator, registerValidator } from '../lib/validation';
+import storage from '../lib/storage';
 
 const host = 'http://localhost:4000';
+
+export function isLogin() {
+    return (dispatch) => {
+        try {
+            const token = storage.get('token');
+            const user = storage.get('user');
+
+            if (!token) { // 토큰이 없을 때
+                dispatch(isLoginFailure('NOT_FOUND'));
+            } else {
+                dispatch(isLoginSuccess(token, user));
+            }
+        } catch (error) {
+            dispatch(isLoginFailure('ERROR'));
+        }
+    };
+}
+
+export function isLoginSuccess(token, user) {
+    return {
+        type: IS_LOGIN_SUCCESS,
+        token,
+        user,
+    };
+}
+
+export function isLoginFailure(message) {
+    return {
+        type: IS_LOGIN_FAILURE,
+        message,
+    };
+}
 
 export function signInRequest(email, password) {
 

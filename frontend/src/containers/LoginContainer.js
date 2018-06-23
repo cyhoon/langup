@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { signInRequest } from '../actions/Authentications';
 import LoginMain from '../components/organisms/LoginMain';
+import Storage from '../lib/storage';
 
 import { bindActionCreators } from 'redux';
 
@@ -25,15 +26,8 @@ class LoginContainer extends Component {
       return this.props.signInRequest(this.state.id, this.state.pw)
       .then(() => {
         if (this.props.status === 'SUCCESS') {
-            let loginData = {
-                isLoggedIn: true,
-                token: this.props.token,
-                refreshToken: this.props.refreshToken,
-            };
-
-            // document.cookie = 'key=' + btoa(JSON.stringify(loginData));
-            // document.cookie.token = this.props.token;
-            document.cookie = 'token='+this.props.token;
+            Storage.set('token', this.props.token);
+            Storage.set('user', this.props.user);
 
             this.props.history.push('/');
             return true;

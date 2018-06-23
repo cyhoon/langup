@@ -112,12 +112,22 @@ class Header extends Component {
                     <NavContainer>
                         <Nav />
                         <ActivateContainer>
+                            {
+                                this.props.isLoggedIn ?
+                                    <UserContainer>
+                                        <UserController
+                                            profileClick={this.profileClick}
+                                        />
+                                    </UserContainer>
+                                :
+                                    <Activate><Link to='/login'>로그인하기</Link></Activate>
+                            }
                             {/* <Activate><Link to='/login'>로그인하기</Link></Activate> */}
-                            <UserContainer>
+                            {/* <UserContainer>
                                 <UserController
                                     profileClick={this.profileClick}
                                 />
-                            </UserContainer>
+                            </UserContainer> */}
                         </ActivateContainer>
                     </NavContainer>
                 </HeaderContainer>

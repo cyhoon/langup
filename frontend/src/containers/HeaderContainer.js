@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { isLogin } from '../actions/Authentications';
+
 import HeaderOrganisms from '../components/organisms/Header';
+import { bindActionCreators } from 'redux';
 
 class HeaderContainer extends Component {
     constructor(props) {
@@ -11,6 +14,8 @@ class HeaderContainer extends Component {
             isPopupOn: false,
             userMenu: null,
         };
+
+        this.props.isLogin();
     }
 
     setUserMenuRef = (userMenu) =>{
@@ -35,6 +40,7 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <HeaderOrganisms
+                    isLoggedIn={this.props.isLoggedIn}
                     isPopupOn={this.state.isPopupOn}
                     setUserMenuRef={this.setUserMenuRef}
                     profileClick={this.profileClick}
@@ -46,11 +52,13 @@ class HeaderContainer extends Component {
 };
 
 const mapStateToProps = (state) => {
-
+    return {
+        ...state.auth.status
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    
+    return bindActionCreators({ isLogin }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

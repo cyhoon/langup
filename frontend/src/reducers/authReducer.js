@@ -26,6 +26,14 @@ const authReducer = (state, action) => {
     }
 
     switch(action.type) {
+        case types.IS_LOGIN_SUCCESS:
+            return update(state, {
+                status: {
+                    isLoggedIn: { $set: true },
+                    token: { $set: action.token },
+                    user: { $set: action.user },
+                }
+            });
         case types.AUTH_LOGIN:
             return update(state, {
                 login: {
