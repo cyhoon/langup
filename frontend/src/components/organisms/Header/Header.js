@@ -116,6 +116,7 @@ class Header extends Component {
                                 this.props.isLoggedIn ?
                                     <UserContainer>
                                         <UserController
+                                            profileImage={this.props.profileImage}
                                             profileClick={this.profileClick}
                                         />
                                     </UserContainer>

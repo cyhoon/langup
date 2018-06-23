@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { isLogin, logout } from '../actions/Authentications';
-
-import HeaderOrganisms from '../components/organisms/Header';
 import { bindActionCreators } from 'redux';
+import { isLogin, logout } from '../actions/Authentications';
+import HeaderOrganisms from '../components/organisms/Header';
+import storage from '../lib/storage';
 
 class HeaderContainer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            user: storage.get('user'),
             isPopupOn: false,
             userMenu: null,
         };
@@ -47,6 +47,7 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <HeaderOrganisms
+                    profileImage={this.state.user.profileImage}
                     isLoggedIn={this.props.isLoggedIn}
                     isPopupOn={this.state.isPopupOn}
                     setUserMenuRef={this.setUserMenuRef}
@@ -60,7 +61,6 @@ class HeaderContainer extends Component {
 };
 
 const mapStateToProps = (state) => {
-    console.log('state: ', state.auth.status.isLoggedIn);
     return {
         ...state.auth.status
     }
