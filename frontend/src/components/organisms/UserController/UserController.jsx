@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from '../../atoms/Image';
 import styled from 'styled-components';
-import UserPopup from '../UserPopup/UserPopup';
 
 const UserController = ({ profileClick }) => {
     const Container = styled.div`

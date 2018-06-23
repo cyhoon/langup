@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import RegisterMain from '../../organisms/RegisterMain';
 import SocialBlock from '../../molecules/SocialBlock';
 
 import { Link } from 'react-router-dom';

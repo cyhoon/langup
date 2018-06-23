@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ServiceMain from '../../organisms/ServiceMain';
-
 const Header = styled.div`
     width: 100%;
     // height: 90px;
@@ -24,12 +22,6 @@ const Section = styled.div`
     width: 1000px;
     margin: 0 auto;
 `; 
-
-// const PopularWords = styled.div`
-//     display: block;
-//     width: 100%;
-//     height: 100%;
-// `;
 
 const MakeYourDictionary = styled.div`
     display: block;

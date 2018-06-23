@@ -101,8 +101,6 @@ class Header extends Component {
 
     profileClick = async () => {
         await this.props.profileClick();
-        console.log('userMenu: ', this._userMenu);
-        // this._userMenu.getRenderedComponent();
         document.getElementById("userMenu").focus();
     }
 
