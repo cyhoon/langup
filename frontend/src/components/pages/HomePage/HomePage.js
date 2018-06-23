@@ -7,7 +7,7 @@ import IntroduceMain from '../../organisms/IntroduceMain';
 
 const HomePage = () => {
     return (
-        <PageTemplate 
+        <PageTemplate
             header={ <HeaderContainer/> }
         >
             <IntroduceMain />
