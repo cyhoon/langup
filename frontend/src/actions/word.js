@@ -8,9 +8,10 @@ import {
 
 import axios from 'axios';
 import { getKey } from '../lib/cookie';
+import storage from '../lib/storage';
 
 const HOST = 'http://localhost:4000';
-const TOKEN = getKey('token');
+const TOKEN = storage.get('token');
 const HEADERS = { headers: { 'x-access-token': `${TOKEN}` } };
 
 export function myWordListRequest() {

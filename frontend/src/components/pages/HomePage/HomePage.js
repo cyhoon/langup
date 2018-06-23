@@ -4,10 +4,10 @@ import HeaderContainer from '../../../containers/HeaderContainer';
 import PageTemplate from '../../templates/PageTemplate';
 import IntroduceMain from '../../organisms/IntroduceMain';
 
-const HomePage = () => {
+const HomePage = ({ history }) => {
     return (
         <PageTemplate
-            header={ <HeaderContainer/> }
+            header={ <HeaderContainer history={history} /> }
         >
             <IntroduceMain />
         </PageTemplate>

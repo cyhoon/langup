@@ -2,6 +2,9 @@ import {
     IS_LOGIN,
     IS_LOGIN_SUCCESS,
     IS_LOGIN_FAILURE,
+    AUTH_LOGOUT,
+    AUTH_LOGOUT_SUCCESS,
+    AUTH_LOGOUT_FAILURE,
     AUTH_LOGIN,
     AUTH_LOGIN_SUCCESS,
     AUTH_LOGIN_FAILURE,
@@ -17,6 +20,33 @@ import { loginValidator, registerValidator } from '../lib/validation';
 import storage from '../lib/storage';
 
 const host = 'http://localhost:4000';
+
+export function logout() {
+    return (dispatch) => {
+        try {
+            storage.remove('token');
+            storage.remove('user');
+
+            dispatch(logoutSuccess('로그아웃 성공'));
+        } catch (error) {
+            dispatch(logoutFailure('로그아웃 실패'));
+        }
+    };
+}
+
+export function logoutSuccess(message) {
+    return {
+        type: AUTH_LOGOUT_SUCCESS,
+        message,
+    };
+}
+
+export function logoutFailure(message) {
+    return {
+        type: AUTH_LOGOUT_FAILURE,
+        message,
+    };
+}
 
 export function isLogin() {
     return (dispatch) => {

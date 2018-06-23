@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from '../../molecules/Popup/Popup';
 import styled from 'styled-components';
 
-const UserPopup = () => {
+const UserPopup = ({ handleLogout }) => {
     const List = styled.ul`
         background-color: inherit;
         list-style: none;
@@ -25,7 +25,7 @@ const UserPopup = () => {
     return (
         <List>
             <Item>내 정보</Item>
-            <Item>로그아웃</Item>
+            <Item onClick={handleLogout}>로그아웃</Item>
         </List>
     );
 };

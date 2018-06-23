@@ -138,7 +138,9 @@ class Header extends Component {
                             onBlur={this.props.handleOnBlur}
                         >
                             <PopoverArrow/>
-                            <UserPopup />
+                            <UserPopup 
+                                handleLogout={this.props.handleLogout}
+                            />
                         </UserPopupContainer>
                     :
                     '' 

@@ -60,6 +60,8 @@ const authReducer = (state, action) => {
                     message: { $set: action.message },
                 }
             });
+        case types.AUTH_LOGOUT_SUCCESS:
+            return state = initialState;
         case types.AUTH_REGISTER:
             return state;
         case types.AUTH_REGISTER_SUCCESS:

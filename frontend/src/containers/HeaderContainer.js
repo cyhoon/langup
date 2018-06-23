@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { isLogin } from '../actions/Authentications';
+import { isLogin, logout } from '../actions/Authentications';
 
 import HeaderOrganisms from '../components/organisms/Header';
 import { bindActionCreators } from 'redux';
@@ -30,11 +30,18 @@ class HeaderContainer extends Component {
         });
     }
 
-    handleOnBlur = (val, target) => {
+    handleOnBlur = () => {
         this.setState({
             isPopupOn: false,
         });
     }
+
+    handleLogout = async () => {
+        await this.props.logout();
+
+        this.handleOnBlur();
+        // this.props.history.push('/');
+    };
 
     render() {
         return (
@@ -45,6 +52,7 @@ class HeaderContainer extends Component {
                     setUserMenuRef={this.setUserMenuRef}
                     profileClick={this.profileClick}
                     handleOnBlur={this.handleOnBlur}
+                    handleLogout={this.handleLogout}
                 />
             </div>
         );
@@ -52,13 +60,14 @@ class HeaderContainer extends Component {
 };
 
 const mapStateToProps = (state) => {
+    console.log('state: ', state.auth.status.isLoggedIn);
     return {
         ...state.auth.status
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ isLogin }, dispatch);
+    return bindActionCreators({ isLogin, logout }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
