@@ -10,12 +10,21 @@ class HeaderContainer extends Component {
         super(props);
 
         this.state = {
-            user: storage.get('user'),
+            user: null,
             isPopupOn: false,
             userMenu: null,
         };
 
         this.props.isLogin();
+    }
+
+    async componentDidMount() {
+        await this.setState({
+            user: storage.get('user'),
+        });
+
+        console.log(this.state.user);
+        console.log('type: ', typeof(this.state.user));
     }
 
     setUserMenuRef = (userMenu) =>{
@@ -47,7 +56,7 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <HeaderOrganisms
-                    profileImage={this.state.user.profileImage}
+                    profileImage={this.state.user !== null ? this.state.user.profileImage : ''}
                     isLoggedIn={this.props.isLoggedIn}
                     isPopupOn={this.state.isPopupOn}
                     setUserMenuRef={this.setUserMenuRef}

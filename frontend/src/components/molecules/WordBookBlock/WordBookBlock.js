@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Image from '../../atoms/Image';
 
-const WordBookBlock = ({ idx, title, userEmail, createDate, left, right }) => {
+const WordBookBlock = ({ idx, title, userEmail, createDate, left, profileImage, right }) => {
     const Container = styled.div`
         display: inline-flex;
         flex-direction: column;
@@ -78,7 +78,7 @@ const WordBookBlock = ({ idx, title, userEmail, createDate, left, right }) => {
         border-radius: 100%;
         background-color: #eee;
 
-        background-image: url('https://cdn-images-1.medium.com/fit/c/40/40/1*aFLLGsE20mi1mOuO8HH9ug.jpeg');
+        background-image: url('${profileImage}');
         background-size: cover;
 
         margin-right: 10px;

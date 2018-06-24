@@ -20,6 +20,7 @@ class WordBookMain extends Component {
                             title={data.title}
                             userEmail={data.user_email}
                             createDate={data.create_date}
+                            profileImage={this.props.profileImage}
                             right="0"
                         />
                     </Link>
@@ -31,6 +32,7 @@ class WordBookMain extends Component {
                         title={data.title}
                         userEmail={data.user_email}
                         createDate={data.create_date}
+                        profileImage={this.props.profileImage}
                     />
                 </Link>
 

@@ -17,6 +17,7 @@ class WordBookListContainer extends Component {
         return (
             <div>
                 <WordBookMain
+                    profileImage={this.props.profileImage}
                     list={this.props.list}
                 />
             </div>
@@ -24,8 +25,8 @@ class WordBookListContainer extends Component {
     }
 };
 
-const mapStateToProps = ({ word }) => {
-    return { ...word.myBook };
+const mapStateToProps = ({ auth, word }) => {
+    return { ...word.myBook, ...auth.status.user };
 };
 
 const mapDispatchToProps = (dispatch) => {
