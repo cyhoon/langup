@@ -60,6 +60,9 @@ export function myWordBookShowRequest(bookIdx) {
                 case 0:
                     dispatch(myWordBookShowSuccess(response.data));
                     break;
+                case 20: // 단어장을 볼 수 없을 때
+                    dispatch(myWordBookShowFailure('단어장을 볼 수 없음'));
+                    break;
                 default:
                     dispatch(myWordBookShowFailure('서버 오류'));
                     break;
