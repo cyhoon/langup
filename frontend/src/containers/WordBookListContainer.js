@@ -13,7 +13,9 @@ class WordBookListContainer extends Component {
         super(props);
     }
 
-    componentDidMount = () => { this.props.myWordListRequest(); }
+    componentDidMount = () => { 
+        this.props.isLoggedIn ? this.props.myWordListRequest() : '';
+    }
 
     render() {
         console.log('this props: ', this.props);
