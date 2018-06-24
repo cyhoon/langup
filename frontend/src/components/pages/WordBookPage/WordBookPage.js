@@ -18,13 +18,14 @@ const WordBookPage = () => {
             header={
                 <HeaderContainer />
             }
+
         >
             <Container>
-                <InformationMain
+                {/* <InformationMain
                     title="나만의 단어장"
                     explanation="회원님의 단어장을 보여 줍니다"
                     buttonText="단어장 추가"
-                />
+                /> */}
                 <WordBookListContainer />
             </Container>
         </PageTemplate>
