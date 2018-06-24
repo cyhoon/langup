@@ -53,10 +53,10 @@ exports.show = async (ctx, err) => {
       }));
 
       response.data = changeCase.snakeKeys(vocabulary.toJSON(), { arrayRecursive: true });
-
-      ctx.status = 200;
-      ctx.body = response;
     }
+
+    ctx.status = 200;
+    ctx.body = response;
   } catch (error) {
     console.error('error: ', error);
     response.status = 500;
