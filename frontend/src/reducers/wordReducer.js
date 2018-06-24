@@ -23,6 +23,8 @@ const wordReducer = (state, action) => {
     }
 
     switch (action.type) {
+        case types.AUTH_LOGOUT_SUCCESS:
+            return state = initialState;
         case types.MY_WORD_BOOK_LIST_SUCCESS:
             return update(state, {
                 myBook: {
