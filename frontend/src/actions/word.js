@@ -12,11 +12,12 @@ import storage from '../lib/storage';
 
 const HOST = 'http://localhost:4000';
 let TOKEN = storage.get('token');
-const HEADERS = { headers: { 'x-access-token': `${TOKEN}` } };
+let HEADERS = { headers: { 'x-access-token': `${TOKEN}` } };
 
 export function myWordListRequest() {
     return (dispatch) => {
         TOKEN = storage.get('token');
+        HEADERS = { headers: { 'x-access-token': `${TOKEN}` } };
         return axios.get(HOST + '/user/me/vocabulary', HEADERS)
         .then((response) => {
             const { status } = response.data;
@@ -52,6 +53,7 @@ export function myWordListFailure(message) {
 export function myWordBookShowRequest(bookIdx) {
     return (dispatch) => {
         TOKEN = storage.get('token');
+        HEADERS = { headers: { 'x-access-token': `${TOKEN}` } };
         return axios.get(HOST + `/user/me/vocabulary/${bookIdx}`, HEADERS)
         .then(response => {
             const { status } = response.data;
