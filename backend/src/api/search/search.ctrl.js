@@ -46,6 +46,7 @@ exports.search = async (ctx, err) => {
         const userBookInsertData = {
           title: `단어장 (${nowDate})`,
           userEmail,
+          // profileImage,
           createDate: nowDate
         }
         userBook = await models.UserBook.create(userBookInsertData);
