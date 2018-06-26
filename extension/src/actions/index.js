@@ -4,6 +4,7 @@
  */
 
 import axios from 'axios';
+import { encryptionSha512 } from '../lib/crypto';
 
 /**
  * @description
@@ -45,9 +46,11 @@ export function login(email, password) {
     // 서버로 보내주는 작업 처리
     const url = baseUrl + '/auth/local/signin';
 
+    const cypherText = encryptionSha512(password);
+
     axios.post(url, {
         email,
-        password,
+        password: cypherText,
     }).then((res) => {
         // 결과를 보고 로그인에 성공했다면 chrome.extension.storge에 저장.
         const { status } = res.data;
