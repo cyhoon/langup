@@ -14,7 +14,6 @@ class WordBookDetailContainer extends Component {
     }
 
     render() {
-        console.log('status: ', this.props.status);
         return (
             <div>
                 {
@@ -43,7 +42,6 @@ class WordBookDetailContainer extends Component {
 };
 
 const mapStateToProps = ({ word }) => {
-    console.log('word: ', word);
     return { ...word.focusBook };
 };
 
