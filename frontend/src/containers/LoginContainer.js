@@ -14,6 +14,10 @@ class LoginContainer extends Component {
       this.state = { id: '', pw: '' };
   }
 
+  componentWillMount = () => {
+      if (Storage.get('user') !== null) { this.props.history.push('/'); }
+  }
+
   handleChangeInputId = (e) => {
     this.setState({ id: e.target.value });
   }
@@ -58,7 +62,6 @@ class LoginContainer extends Component {
 
 const mapStateToProps = ({ auth }) => {
     const { status, messageOn, message } = auth.login;
-    const { isLoggedIn, token, refreshToken, user } = auth.status;
 
     return {
         status, messageOn, message,

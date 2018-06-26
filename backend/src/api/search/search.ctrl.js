@@ -1,4 +1,5 @@
 const dateHelper = require('../../helper/dateFormat');
+const randomImage = require('../../helper/randomImage');
 
 /**
  * User module dependencies.
@@ -43,10 +44,11 @@ exports.search = async (ctx, err) => {
       let userBook = await models.UserBook.selectByUserBookToday(models, userEmail, nowDate);
 
       if (userBook === null) {
+        const bookImage = randomImage.selectRandomImage();
         const userBookInsertData = {
           title: `단어장 (${nowDate})`,
           userEmail,
-          // profileImage,
+          bookImage,
           createDate: nowDate
         }
         userBook = await models.UserBook.create(userBookInsertData);
@@ -65,6 +67,7 @@ exports.search = async (ctx, err) => {
 
       models.UserWord.create(userWordInsertData);
     } catch (error) {
+      console.log('error: ', error);
       response.status = 500;
       response.message = '서버 에러';
       ctx.status = 500;

@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import { signUpRequest } from '../actions/Authentications';
 import RegisterMain from '../components/organisms/RegisterMain';
 
+import Storage from '../lib/storage';
+
 class RegisterContainer extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +16,10 @@ class RegisterContainer extends Component {
             pw: '',
             name: ''
         };
+    }
+
+    componentWillMount = () => {
+        if (Storage.get('user') !== null) { this.props.history.push('/'); }
     }
 
     handleChangeInputId = (e) =>  {
@@ -31,7 +37,13 @@ class RegisterContainer extends Component {
     handleRegister = () => {
         return this.props.signUpRequest(this.state.id, this.state.pw, this.state.name)
         .then(() => {
-            if (this.props.status === 'SUCCESS') { this.props.history.push('/'); }
+            if (this.props.status === 'SUCCESS') { 
+                Storage.set('token', this.props.token);
+                Storage.set('user', this.props.user);
+
+                this.props.history.push('/');
+                return true;
+            }
         });
     }
 
@@ -62,7 +74,7 @@ class RegisterContainer extends Component {
 
 const mapStateToProps = ({ auth }) => {
     const { status, messageOn, message } = auth.register;
-    return { status, messageOn, message };
+    return { status, messageOn, message, ...auth.status };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -13,8 +13,8 @@ class WordBookDetailContainer extends Component {
         super(props);
     }
 
-    componentDidMount = async () => {
-        this.props.myWordBookShowRequest(this.props.bookIdx);
+    componentWillMount = async () => {
+        await this.props.myWordBookShowRequest(this.props.bookIdx);
     }
 
     render() {

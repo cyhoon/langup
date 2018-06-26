@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Image from '../../atoms/Image';
 
-const WordBookBlock = ({ idx, title, userEmail, createDate, left, profileImage, right }) => {
+const WordBookBlock = ({ idx, title, userEmail, createDate, left, bookImage, profileImage, right }) => {
     const Container = styled.div`
         display: inline-flex;
         flex-direction: column;
@@ -101,7 +101,7 @@ const WordBookBlock = ({ idx, title, userEmail, createDate, left, profileImage, 
     return (
         <Container>
             <ImageContainer>
-                <Image imageSrc="https://cdn-images-1.medium.com/max/800/1*7z3W_ZK9kMi_vqebWqX_ww.png" />
+                <Image imageSrc={`${bookImage}`} />
             </ImageContainer>
             <TextContainer>
                 <BookInformation>

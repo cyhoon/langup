@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import HeaderContainer from '../../../containers/HeaderContainer';
 import PageTemplate from '../../templates/PageTemplate';
-import InformationMain from '../../organisms/InformationMain';
 import WordBookListContainer from '../../../containers/WordBookListContainer';
 
 const Container = styled.div`

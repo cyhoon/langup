@@ -8,7 +8,7 @@ const initialState = {
         list: [],
     },
     focusBook: {
-        status: 'INIT',
+        status: 'FAILURE',
         message: '상세 보기 조회 완료',
         idx: null,
         title: 'LOADING ...',

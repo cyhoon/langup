@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         profileImage: {
             field: 'profile_image',
             type: DataTypes.STRING(300),
-            defaultValue: 'base.png',
+            defaultValue: 'http://qrock.cafe24app.com/public/users/ihello0720@gmail.com/SYS02.png',
         },
         introduce: {
             field: 'introduce',
