@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../../atoms/Button';
 
 import Nav from '../../molecules/Nav';
 import UserController from '../UserController/UserController';
@@ -19,19 +18,10 @@ const HeaderContainer = styled.div`
     display: flex;
 `;
 
-const Left = styled.div`
-    line-height: 50px;
-`;
-
 const Logo = styled.span`
     font-weight: bold;
     font-size: 32px;
     cursor: pointer;
-`;
-
-const Right = styled.div`
-    text-align: right;
-    line-height: 50px;
 `;
 
 const NavContainer = styled.div`
@@ -123,12 +113,6 @@ class Header extends Component {
                                 :
                                     <Activate><Link to='/login'>로그인하기</Link></Activate>
                             }
-                            {/* <Activate><Link to='/login'>로그인하기</Link></Activate> */}
-                            {/* <UserContainer>
-                                <UserController
-                                    profileClick={this.profileClick}
-                                />
-                            </UserContainer> */}
                         </ActivateContainer>
                     </NavContainer>
                 </HeaderContainer>

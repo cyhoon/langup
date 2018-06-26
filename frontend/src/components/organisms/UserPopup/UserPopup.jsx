@@ -1,5 +1,4 @@
 import React from 'react';
-import Popup from '../../molecules/Popup/Popup';
 import styled from 'styled-components';
 
 const UserPopup = ({ handleLogout }) => {

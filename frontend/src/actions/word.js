@@ -1,5 +1,4 @@
 import {
-    MY_WORD_BOOK_LIST,
     MY_WORD_BOOK_LIST_SUCCESS,
     MY_WORD_BOOK_LIST_FAILURE,
     MY_WORD_BOOK_SHOW_FAILURE,
@@ -7,7 +6,6 @@ import {
 } from './ActionTypes';
 
 import axios from 'axios';
-import { getKey } from '../lib/cookie';
 import storage from '../lib/storage';
 
 const HOST = 'http://localhost:4000';

@@ -1,8 +1,6 @@
 import {
-    IS_LOGIN,
     IS_LOGIN_SUCCESS,
     IS_LOGIN_FAILURE,
-    AUTH_LOGOUT,
     AUTH_LOGOUT_SUCCESS,
     AUTH_LOGOUT_FAILURE,
     AUTH_LOGIN,
@@ -107,6 +105,9 @@ export function signInRequest(email, password) {
                 case 20: // 계정을 찾을 수 없을 때
                     dispatch(signInFailure('계정을 찾을 수 없습니다'));
                     break;
+                default:
+                    dispatch(signInFailure('서버 오류'));
+                    break;
             }
             // dispatch(signInSuccess(response));
         }).catch((error) => {
@@ -176,6 +177,9 @@ export function signUpRequest(email, password, name) {
                     break;
                 case 30: // 이미 가입 되어 있을 때
                     dispatch(signUpFailure('이미 계정이 존재합니다'));
+                    break;
+                default:
+                    dispatch(signUpFailure('서버 오류'));
                     break;
             }
         }).catch((error) => {

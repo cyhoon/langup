@@ -17,19 +17,6 @@ const Main = styled.div`
     position: relative;
 `;
 
-const Section = styled.div`
-    display: block;
-    width: 1000px;
-    margin: 0 auto;
-`; 
-
-const MakeYourDictionary = styled.div`
-    display: block;
-    width: 1000px !important;
-    height: 300px;
-    margin: 0 auto;
-`;
-
 const PageTemplate = ({ header, children }) => {
     return (
         <div>

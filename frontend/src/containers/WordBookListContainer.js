@@ -9,12 +9,10 @@ import ErrorBlock from '../components/molecules/ErrorBlock';
 import InformationMain from '../components/organisms/InformationMain';
 
 class WordBookListContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount = () => { 
-        this.props.isLoggedIn ? this.props.myWordListRequest() : '';
+    componentDidMount = () => {
+        if (this.props.isLoggedIn) {
+            this.props.myWordListRequest();
+        }
     }
 
     render() {

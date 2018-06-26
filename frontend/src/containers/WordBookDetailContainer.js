@@ -9,10 +9,6 @@ import WordMain from '../components/organisms/WordMain';
 import ErrorBlock from '../components/molecules/ErrorBlock';
 
 class WordBookDetailContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentWillMount = async () => {
         await this.props.myWordBookShowRequest(this.props.bookIdx);
     }
